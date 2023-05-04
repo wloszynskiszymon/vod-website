@@ -1,6 +1,8 @@
 import MovieTile from './UI/MovieTile';
 
-const Main = () => {
+const Main = (props) => {
+  const [moviesArray, seriesArray] = props.img;
+
   return (
     <main className='bg-gray-800 pt-10 pb-32'>
       <section className='w-full flex flex-col items-center justify-center'>
@@ -8,11 +10,12 @@ const Main = () => {
           Najpopularniejsze filmy
         </h2>
         <div className='px-40 w-full grid grid-cols-5 gap-4 py-2'>
-          <MovieTile />
-          <MovieTile />
-          <MovieTile />
-          <MovieTile />
-          <MovieTile />
+          {moviesArray.map((movies, index) => (
+            <MovieTile
+              key={`m${index}`}
+              img={`https://image.tmdb.org/t/p/original/${movies.backdrop_path}`}
+            />
+          ))}
         </div>
       </section>
 
@@ -21,11 +24,12 @@ const Main = () => {
           Najpopularniejsze seriale
         </h2>
         <div className='px-40 w-full grid grid-cols-5 gap-4 py-2'>
-          <MovieTile />
-          <MovieTile />
-          <MovieTile />
-          <MovieTile />
-          <MovieTile />
+          {seriesArray.map((series, index) => (
+            <MovieTile
+              key={`s${index}`}
+              img={`https://image.tmdb.org/t/p/original/${series.backdrop_path}`}
+            />
+          ))}
         </div>
       </section>
     </main>

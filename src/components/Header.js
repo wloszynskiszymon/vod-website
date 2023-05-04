@@ -1,9 +1,16 @@
 import SearchIcon from './UI/SearchIcon';
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <header className='h-[45rem] bg-gray-900'>
-      <div className='flex justify-center items-center flex-col m-auto w-3/4 h-full px-40 bg-[linear-gradient(to_right,rgba(17,24,39,1),rgba(17,24,39,0.6),rgba(17,24,39,0.6),rgba(17,24,39,1)),url("https://media.vanityfair.com/photos/5759c5621e43ab7160f25bcb/16:9/w_1280,c_limit/warcraft-movie-review.jpg")]  bg-cover bg-center'>
+    <header className='h-[45rem] relative bg-gray-900'>
+      <img
+        src={props.img}
+        alt='Header background'
+        className='w-5/6 h-full absolute transfrom top-0 left-1/2 -translate-x-1/2 bg-cover bg-center'
+      />
+      <div
+        className={`flex justify-center items-center flex-col m-auto w-11/12 h-full px-40 z-10 relative bg-gradient-to-r from-gray-900 from-10% via-[rgba(17,24,39,0.6)] via-50% to-gray-900 to-90%`}
+      >
         <h1 className='text-6xl font-extrabold text-white mb-6'>
           Witamy na stronie!
         </h1>
