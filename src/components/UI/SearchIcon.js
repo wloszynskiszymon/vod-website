@@ -1,7 +1,7 @@
 const SearchIcon = () => {
   return (
     <svg width='25px' height='25px' viewBox='0 -0.5 21 21' version='1.1'>
-      <g id='Page-1' stroke='none' stroke-width='1' fill='' fill-rule='evenodd'>
+      <g id='Page-1' stroke='none' strokeWidth='1' fill='' fillRule='evenodd'>
         <g
           id='Dribbble-Light-Preview'
           transform='translate(-299.000000, -280.000000)'
