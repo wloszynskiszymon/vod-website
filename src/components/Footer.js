@@ -3,7 +3,7 @@ import Logo from '../assets/logo_stopka.png';
 const Footer = () => {
   return (
     <footer className=' bg-gray-950 px-12 py-8'>
-      <div class='w-full h-full'>
+      <div className='w-full h-full'>
         <div className='flex justify-center items-center flex-col'>
           <img className='h-20' src={Logo} alt='logo' />
           <a

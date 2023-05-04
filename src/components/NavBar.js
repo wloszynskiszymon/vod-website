@@ -2,7 +2,7 @@ import Logo from '../assets/logo.png';
 import '../index.css';
 const NavBar = () => {
   return (
-    <nav className='w-full flex justify-around items-center px-20 h-20 bg-transparent fixed backdrop-blur-sm z-10'>
+    <nav className='w-full flex justify-around items-center px-20 h-20 bg-transparent fixed backdrop-blur-sm z-50'>
       <img className=' h-14' src={Logo} alt='Logo' />
       <div className='pl-12 flex space-x-4'>
         <a
