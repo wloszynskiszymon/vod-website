@@ -3,59 +3,40 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-const API_URL_MOVIES = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-const API_URL_SERIES = `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=1`;
+const API_URL_MOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&region=PL&with_original_title&with_images=true&with_media_type=movie`;
 
 function App() {
-  const [moviesImages, setMoviesImages] = useState([]);
-  const [seriesImages, setSeriesImages] = useState([]);
   const [imageHeader, setImageHeader] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [movies, setMovies] = useState([]);
 
-  const getMoviesAndSeries = async () => {
+  const fetchMovies = useCallback(async () => {
     try {
-      const [moviesResponse, seriesResponse] = await Promise.all([
-        axios.get(API_URL_MOVIES),
-        axios.get(API_URL_SERIES),
-      ]);
-      const movies = moviesResponse.data.results.slice(0, 5);
-      const series = seriesResponse.data.results.slice(4, 9);
-      setMoviesImages(movies);
-      setSeriesImages(series);
+      const res = await axios.get(API_URL_MOVIES);
+      const headerMovies = res.data.results.slice(0, 10);
+      const randomIndex = Math.floor(Math.random() * 10);
 
-      const randomIndex = Math.floor(Math.random() * 5);
+      setMovies(headerMovies);
       setImageHeader(
-        `https://image.tmdb.org/t/p/original/${movies[randomIndex].backdrop_path}`
+        `https://image.tmdb.org/t/p/original/${headerMovies[randomIndex].backdrop_path}`
       );
     } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
+      console.log(error.message);
     }
-  };
-
-  useEffect(() => {
-    getMoviesAndSeries();
   }, []);
 
-  const fullArray = [moviesImages, seriesImages];
-  console.log(fullArray);
+  useEffect(() => {
+    fetchMovies();
+  }, [fetchMovies]);
+
   return (
     <>
       <NavBar />
-      <Header img={imageHeader} />
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : (
-        <Main img={fullArray} />
-      )}
+      {imageHeader && <Header img={imageHeader} />}
+      <Main movies={movies} />
       <Footer />
     </>
   );
