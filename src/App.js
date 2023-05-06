@@ -16,8 +16,8 @@ function App() {
   const fetchMovies = useCallback(async () => {
     try {
       const res = await axios.get(API_URL_MOVIES);
-      const headerMovies = res.data.results.slice(0, 10);
-      const randomIndex = Math.floor(Math.random() * 10);
+      const headerMovies = res.data.results;
+      const randomIndex = Math.floor(Math.random() * headerMovies.length);
 
       setMovies(headerMovies);
       setImageHeader(
@@ -30,7 +30,6 @@ function App() {
 
   useEffect(() => {
     fetchMovies();
-    console.log('test')
   }, [fetchMovies]);
 
   return (

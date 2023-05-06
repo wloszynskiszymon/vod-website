@@ -5,34 +5,32 @@ const MovieTile = (props) => {
   const handleHover = () => setHovered(true);
   const handleLeave = () => setHovered(false);
 
-  const hasImage = props.img ? props.img : null;
   const URL = `https://www.themoviedb.org/${props.isMovie ? 'movie' : 'tv'}/`;
 
   return (
     <div
-      className='flex justify-center items-center relative border-2 border-purple-800 shadow-2xl overflow-hidden hover:border-white transition-all hover:scale-105 cursor-pointer '
+      className='w-[17rem] min-h-[5rem] flex justify-center items-center relative border-2 border-gray-600 drop-shadow-2xl overflow-hidden hover:border-white transition-all hover:scale-105 cursor-pointer rounded-xl'
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
     >
-      <a href={URL + props.id} target='_blank' rel='noreferrer'>
-        <div className='absolute top-0 left-0 w-full h-full bg-black opacity-0 bg-opacity-0 hover:bg-opacity-60 hover:opacity-100 flex justify-center items-center transition-opacity druation-200'>
-          <p className='text-white tracking-tighter lg:text-sm text-lg font-bold text-center'>
-            {props.title ? props.title : props.name}
-          </p>
+      <a
+        href={URL + props.id}
+        target='_blank'
+        rel='noreferrer'
+        className='block w-full'
+      >
+        <div className='absolute top-0 left-0 w-full h-full bg-gray-900 bg-opacity-20 hover:bg-black  hover:bg-opacity-80 flex justify-center items-center transition-opacity druation-200'>
+          {hovered && (
+            <p className='text-white tracking-tighter text-sm lg:text-lg font-bold text-center p-1'>
+              {props.title ? props.title : props.name}
+            </p>
+          )}
         </div>
-        {hasImage && (
-          <img
-            src={hasImage}
-            className='bg-cover'
-            alt={`${props.title} poster`}
-          />
-        )}
-
-        {!hasImage && !hovered && (
-          <p className='text-gray-500 tracking-tighter lg:text-sm text-lg font-bold text-center'>
-            No movie poster
-          </p>
-        )}
+        <img
+          src={props.img}
+          className='object-contain w-full'
+          alt={`${props.title} poster`}
+        />
       </a>
     </div>
   );
