@@ -1,7 +1,9 @@
+import { useRef } from 'react';
 import MovieTile from './MovieTile';
 
 const MovieTilesRow = (props) => {
   const isMovie = props.isMovie;
+  const divRef = useRef(null);
 
   const movieTiles = props.data.map((data) => {
     return (
@@ -20,14 +22,16 @@ const MovieTilesRow = (props) => {
   });
 
   return (
-    <section className='w-full flex flex-col items-center justify-center'>
-      {!props.hideHeading && <h2 className='text-white font-extrabold self-start text-2xl uppercase mt-6 mb-2 px-40 tracking-wider'>
-        {`Najpopularniejsze ${isMovie ? 'filmy' : 'seriale'}`}
-      </h2>}
-      <div className='px-40 lg:px-20 md:px-2 w-full grid grid-cols-5 gap-4 md:gap-2 py-2'>
-        {movieTiles}
+    <div className='flex flex-col flex-wrap items-center overflow-auto'>
+      <div className='relative px-4 md:px-15 lg:px-35'>
+        <div
+          ref={divRef}
+          className='w-full flex justify-start gap-2 md:gap-4 py-1 transition duration-700'
+        >
+          {movieTiles}
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
