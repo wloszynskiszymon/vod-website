@@ -30,15 +30,16 @@ function App() {
 
   useEffect(() => {
     fetchMovies();
+    console.log('test')
   }, [fetchMovies]);
 
   return (
-    <>
+    <div className='overflow-hidden'>
       <NavBar />
       {imageHeader && <Header img={imageHeader} />}
       <Main movies={movies} />
       <Footer />
-    </>
+    </div>
   );
 }
 

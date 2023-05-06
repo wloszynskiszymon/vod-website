@@ -35,22 +35,23 @@ const InputSearch = () => {
 
   const onChangeHandler = () => {
     const query = inputRef.current.value;
-    if (query.length === 0) return;
+    if (query.length === 0) {
+      setData(null);
+      return;
+    }
     search(query);
   };
 
-  const onBlur = () => setData(null);
 
   return (
     <div className='relative flex items-center flex-col w-full h-1/2'>
-      <div className='relative w-2/5 flex justify-center items-center mt-10'>
+      <div className='relative w-2/5 lg:w-3/5 md:w-4/5 flex justify-center items-center mt-10'>
         <input
           className='px-4 py-2 pr-16 border border-purple-700 text-white bg-gray-900 rounded-full w-full'
           type='text'
           placeholder='Search...'
           onKeyDown={onSearchHandler}
           onChange={onChangeHandler}
-          onBlur={onBlur}
           ref={inputRef}
         />
         <figure
@@ -61,8 +62,8 @@ const InputSearch = () => {
         </figure>
       </div>
       {data && (
-        <div className='absolute bottom-0 w-full bg-gradient-to-b from-[rgba(17,24,39,0)] to-gray-900 to-60% pb-6'>
-          <MovieTilesRow data={data} />
+        <div className='absolute bottom-0 md:w-4/5 bg-gradient-to-b from-[rgba(17,24,39,0)] to-gray-900 to-60% pb-6'>
+          <MovieTilesRow hideHeading={true} data={data} />
         </div>
       )}
     </div>

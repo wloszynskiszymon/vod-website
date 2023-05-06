@@ -16,8 +16,8 @@ const MovieTile = (props) => {
     >
       <a href={URL + props.id} target='_blank' rel='noreferrer'>
         <div className='absolute top-0 left-0 w-full h-full bg-black opacity-0 bg-opacity-0 hover:bg-opacity-60 hover:opacity-100 flex justify-center items-center transition-opacity druation-200'>
-          <p className='text-white tracking-tighter text-lg font-bold text-center'>
-            {props.title}
+          <p className='text-white tracking-tighter lg:text-sm text-lg font-bold text-center'>
+            {props.title ? props.title : props.name}
           </p>
         </div>
         {hasImage && (
@@ -29,7 +29,7 @@ const MovieTile = (props) => {
         )}
 
         {!hasImage && !hovered && (
-          <p className='text-gray-500 tracking-tighter text-lg font-bold text-center'>
+          <p className='text-gray-500 tracking-tighter lg:text-sm text-lg font-bold text-center'>
             No movie poster
           </p>
         )}
