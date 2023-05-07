@@ -9,7 +9,7 @@ const MovieTile = (props) => {
 
   return (
     <div
-      className='w-[17rem] min-h-[5rem] flex justify-center items-center relative border-2 border-gray-600 drop-shadow-2xl overflow-hidden hover:border-white transition-all hover:scale-105 cursor-pointer rounded-xl'
+      className='w-[12rem] lg:w-[14rem] 2xl:w-[18rem] min-h-[5rem] flex justify-center items-center relative border-2 border-gray-600 drop-shadow-2xl overflow-hidden hover:border-white transition-all hover:scale-105 cursor-pointer rounded-xl'
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
     >

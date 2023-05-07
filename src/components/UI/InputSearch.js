@@ -46,7 +46,7 @@ const InputSearch = () => {
   };
 
   return (
-    <div className='relative flex items-center flex-col w-full h-1/2'>
+    <div className='relative flex items-center flex-col w-full h-3/5 lg:h-1/2'>
       <div className='relative w-3/5 lg:w-2/5 flex justify-center items-center mt-3 md:mt-5 lg:mt-10'>
         <input
           className='px-4 py-2 pr-16 border border-purple-700 text-white bg-gray-900 rounded-full w-full'
