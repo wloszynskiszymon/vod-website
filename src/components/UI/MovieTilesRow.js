@@ -22,7 +22,7 @@ const MovieTilesRow = (props) => {
   });
 
   return (
-    <div className='flex flex-col flex-wrap items-center overflow-auto'>
+    <div className='flex flex-col flex-wrap items-center overflow-auto pb-2'>
       <div className='relative px-4 md:px-15 lg:px-35'>
         <div
           ref={divRef}
