@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--secondary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(42, 45, 55);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(71, 75, 87);
+  border-radius: 14px;
+  border: 3px solid rgb(48, 49, 53);
+}
+
+@layer utilities {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-gray-950;
+  }
+}
+
+@layer components {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .link-primary {
+    @apply scroll-smooth font-semibold text-sm md:text-lg tracking-tighter text-gray-300 border-b-2 border-transparent hover:border-blue-200 visited:border-blue-300 visited:text-blue-300 drop-shadow-2xl transition duration-200;
+  }
+}
