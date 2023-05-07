@@ -7,7 +7,7 @@ const Footer = () => {
         <div className='flex justify-center items-center flex-col'>
           <img className='h-20' src={Logo} alt='logo' />
           <a
-            className='font-bold text-white mb-2 tracking-wider hover:underline underline-offset-2'
+            className='link-primary mb-2'
             href='https://developers.themoviedb.org/3'
             rel='noreferrer'
             target='_blank'

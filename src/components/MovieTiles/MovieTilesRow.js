@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import MovieTile from './MovieTile';
 
 const MovieTilesRow = (props) => {
-  const isMovie = props.isMovie;
   const divRef = useRef(null);
 
   const movieTiles = props.data.map((data) => {
@@ -10,19 +9,24 @@ const MovieTilesRow = (props) => {
       <MovieTile
         id={data.id}
         key={data.id}
-        isMovie={isMovie}
+        isMovie={props.isMovie}
         img={
           data.backdrop_path
             ? `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
             : null
         }
         title={data?.title || data?.name}
+        date={data?.first_air_date || data?.release_date}
       />
     );
   });
 
   return (
-    <div className='flex flex-col flex-wrap items-center overflow-auto pb-2'>
+    <div
+      className={`w-full flex justify-center items-center flex-col flex-wrap overflow-x-auto pb-2 ${
+        props.className ? props.className : ''
+      }`}
+    >
       <div className='relative px-4 md:px-15 lg:px-35'>
         <div
           ref={divRef}
