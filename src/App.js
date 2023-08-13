@@ -1,16 +1,17 @@
-import NavBar from './components/NavBar';
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import SearchPage from './pages/SearchPage';
+import MoviePage from './pages/MoviePage';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className='overflow-hidden'>
-      <NavBar />
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<HomePage />}></Route>
+        <Route path='/search' element={<SearchPage />}></Route>
+        <Route path='/:media_type/:id' element={<MoviePage />}></Route>
+      </Routes>
+    </>
   );
 }
 
