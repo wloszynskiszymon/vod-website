@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { API_KEY } from '../hooks/useMedia';
+import { API_KEY } from '../utilities/constants';
 
 const initialState = {
   header: {

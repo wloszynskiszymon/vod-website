@@ -1,4 +1,4 @@
-import { API_KEY } from '../hooks/useMedia';
+import { API_KEY } from '../utilities/constants';
 import React, { useEffect, useState } from 'react';
 import InputSearch from './UI/InputSearch';
 
@@ -11,17 +11,15 @@ const Header = () => {
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
 
-  const {
-    status: headerStatus,
-    error: headersError,
-    data: headerData,
-  } = useSelector((state) => state.mediaSlice.header);
+  const { status: headerStatus, data: headerData } = useSelector(
+    (state) => state.mediaSlice.header
+  );
 
   useEffect(() => {
     if (headerStatus === 'idle') {
       dispatch(fetchMedia({ link: API_URL_MOVIES, dataLocation: 'header' }));
     }
-  }, [dispatch, headerData]);
+  }, [dispatch, headerData, headerStatus]);
 
   useEffect(() => {
     if (headerStatus === 'succeeded') {
@@ -31,7 +29,7 @@ const Header = () => {
         : null;
       setImage(imagePath);
     }
-  }, [headerData]);
+  }, [headerData, headerStatus]);
 
   return (
     <header id='start' className='relative bg-gray-900 flex-center w-full'>
@@ -55,7 +53,7 @@ const Header = () => {
             <span className='text-purple-500 font-bold'> seriale!</span>
           </p>
         </article>
-        <div className='flex justify-between items-center flex-col w-full relative h-[14rem] lg:h-[20rem] pb-3'>
+        <div className='flex justify-between items-center flex-col w-full relative h-[14rem] lg:h-[20rem] pb-3 pt-6 lg:pt-1'>
           <InputSearch />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import SearchIcon from './SearchIcon';
+import SearchIcon from './Icons/SearchIcon';
 import { useNavigate } from 'react-router-dom';
 
 const InputSearch = (props) => {
@@ -13,7 +13,7 @@ const InputSearch = (props) => {
 
   return (
     <div
-      className={`flex-center relative w-7/12 lg:w-2/5 2xl:w-1/4 mt-3 md:mt-5 lg:mt-10 mb-6 md:mb-10 2xl:mt-16 ${
+      className={`flex-center relative w-8/12 lg:w-2/5 2xl:w-1/4 mt-3 md:mt-5 lg:mt-10 mb-6 md:mb-10 2xl:mt-16 ${
         props.className ? props.className : ''
       }`}
     >

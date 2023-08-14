@@ -1,12 +1,11 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { API_KEY } from '../../hooks/useMedia';
+import { API_KEY } from '../../utilities/constants';
 import axios from 'axios';
 
-const MovieTile = (props) => {
+const MovieTile = ({ id, title, name, date, backdrop_path, media_type }) => {
   const navigate = useNavigate();
-
-  const { id, title, name, date, backdrop_path, media_type } = props;
 
   const [backdrop, setBackdrop] = useState(null);
   const onClickHandler = () => navigate(`/${media_type}/${id}`);
@@ -36,8 +35,8 @@ const MovieTile = (props) => {
       }
     };
 
-    fetchRandomMoviesWithLogos();
-  }, [id, media_type, backdrop_path]);
+    !backdrop && fetchRandomMoviesWithLogos();
+  }, [id, media_type, backdrop_path, backdrop]);
 
   function checkIsNew(dateString) {
     const date = new Date(dateString);
@@ -81,4 +80,4 @@ const MovieTile = (props) => {
   );
 };
 
-export default MovieTile;
+export default React.memo(MovieTile);

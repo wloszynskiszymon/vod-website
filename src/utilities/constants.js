@@ -1,4 +1,4 @@
-import { API_KEY } from './hooks/useMedia';
+export const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 function getRandomNumber() {
   return Math.floor(Math.random() * 10) + 1;

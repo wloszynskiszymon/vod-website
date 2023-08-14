@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import MovieTilesRow from './MovieTiles/MovieTilesRow';
-import ErrorIcon from './UI/ErrorIcon';
+import ErrorIcon from './UI/Icons/ErrorIcon';
 import { PulseLoader } from 'react-spinners';
 import { ErrorBoundary } from 'react-error-boundary';
 
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMedias } from '../store/media-slice';
 import { decrement, increment, initSlider } from '../store/movieSlider-slice';
 
-import { MAIN_LINKS } from '../constants';
+import { MAIN_LINKS } from '../utilities/constants';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -44,17 +44,61 @@ const Main = () => {
   const renderSpinnerCondition = moviesStatus === 'loading';
   const renderErrorCondition = moviesError === 'rejected';
 
-  const handleLeftButtonClick = (sliderID) => {
-    dispatch(decrement(sliderID));
-  };
+  const handleLeftButtonClick = useCallback(
+    (sliderID) => {
+      dispatch(decrement(sliderID));
+    },
+    [dispatch]
+  );
 
-  const handleRightButtonClick = (sliderID) => {
-    dispatch(increment(sliderID));
-  };
+  const handleRightButtonClick = useCallback(
+    (sliderID) => {
+      dispatch(increment(sliderID));
+    },
+    [dispatch]
+  );
 
-  const findSlider = function (sliderID) {
-    return sliderData.find((slider) => slider.sliderID === sliderID);
-  };
+  const findSlider = useCallback(
+    (sliderID) => {
+      return sliderData.find((slider) => slider.sliderID === sliderID);
+    },
+    [sliderData]
+  );
+
+  const movieTilesRows = useMemo(() => {
+    return IDs.map((id) => {
+      const slider = findSlider(id);
+      if (!slider) {
+        return null;
+      }
+
+      const { currentPage, maxPages } = slider;
+
+      const movieTileData = moviesData.data.find((data) => data.id === id);
+
+      return (
+        <MovieTilesRow
+          key={id}
+          data={movieTileData.data}
+          sliderID={id}
+          title={movieTileData.title}
+          media_type={movieTileData.media_type}
+          handleLeftButtonClick={(sliderID) => handleLeftButtonClick(sliderID)}
+          handleRightButtonClick={(sliderID) =>
+            handleRightButtonClick(sliderID)
+          }
+          currentPage={currentPage}
+          maxPages={maxPages}
+        />
+      );
+    });
+  }, [
+    IDs,
+    moviesData,
+    findSlider,
+    handleLeftButtonClick,
+    handleRightButtonClick,
+  ]);
 
   return (
     <main className='pt-12 pb-24 bg-gradient-to-r from-neutral-900  via-[rgb(31,41,55)] to-neutral-900'>
@@ -70,40 +114,7 @@ const Main = () => {
           </div>
         </ErrorBoundary>
       ) : (
-        <>
-          {moviesData &&
-            moviesStatus === 'succeeded' &&
-            IDs.map((id) => {
-              const slider = findSlider(id);
-              if (!slider) {
-                return null;
-              }
-
-              const { currentPage, maxPages } = slider;
-
-              const movieTileData = moviesData.data.find(
-                (data) => data.id === id
-              );
-
-              return (
-                <MovieTilesRow
-                  key={id}
-                  data={movieTileData.data}
-                  sliderID={id}
-                  title={movieTileData.title}
-                  media_type={movieTileData.media_type}
-                  handleLeftButtonClick={(sliderID) =>
-                    handleLeftButtonClick(sliderID)
-                  }
-                  handleRightButtonClick={(sliderID) => {
-                    handleRightButtonClick(sliderID);
-                  }}
-                  currentPage={currentPage}
-                  maxPages={maxPages}
-                />
-              );
-            })}
-        </>
+        <>{movieTilesRows}</>
       )}
     </main>
   );

@@ -1,8 +1,8 @@
 import NavBar from '../components/NavBar';
-import DeleteIcon from '../components/UI/DeleteIcon';
+import DeleteIcon from '../components/UI/Icons/DeleteIcon';
 import { useRef, useState, useEffect } from 'react';
 
-import { API_KEY } from '../hooks/useMedia';
+import { API_KEY } from '../utilities/constants';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -67,9 +67,6 @@ const SearchPage = () => {
     debouncedFetchData(inputValue);
   }, [inputValue]);
 
-  const movies = renderMovieTiles(results, null);
-  console.log(movies);
-
   const resultsMarkup =
     results.length > 0 &&
     status === 'succeeded' &&
@@ -90,7 +87,7 @@ const SearchPage = () => {
   return (
     <>
       <NavBar />
-      <div className='w-full h-1/5 bg-blue-950 transform translate-y-20 flex flex-center'>
+      <div className='w-full h-1/5 bg-blue-950 transform translate-y-20 flex flex-center px-6'>
         <input
           placeholder='Wpisz nazwę filmu lub serialu...'
           type='text'
@@ -107,7 +104,7 @@ const SearchPage = () => {
       </div>
 
       <div className='w-full h-4/5 translate-y-28'>
-        <div className='grid grid-cols-6 gap-4 w-full h-full overflow-y-auto p-6'>
+        <div className='grid grid-cols-2 md:grid-cols-3 lg-grid-cols-4 xl:grid-cols-6 gap-4 w-full h-full overflow-y-auto p-6'>
           {results.length > 0 && status === 'succeeded' && resultsMarkup}
           {results.length === 0 && status === 'succeeded' && notFoundMarkup}
           {status === 'loading' && loadingMarkup}
