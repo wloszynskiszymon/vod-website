@@ -8,53 +8,53 @@ export const MAIN_LINKS = [
   {
     id: 'best-movies',
     link: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&region=PL&with_images=true&language=pl&with_backdrop=true&page=${getRandomNumber()}`,
-    title: 'Odkryj interesujące filmy!',
+    title: 'Discover the best movies!',
     media_type: 'movie',
   },
   {
     id: 'now-playing-movies',
     link: `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&sort_by=popularity.desc&region=PL&with_images=true&language=pl&with_backdrop=true`,
-    title: 'Teraz grane w kinach!',
+    title: 'Now playing in theaters!',
     media_type: 'movie',
   },
   {
     id: 'popular-movies',
     link: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&sort_by=popularity.desc&region=PL&with_images=true&language=pl&with_backdrop=true&page=${getRandomNumber()}`,
-    title: 'Najpopularniejsze filmy!',
+    title: 'The most popular movies!',
     media_type: 'movie',
   },
   {
     id: 'top-rated-movies',
     link: `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&sort_by=popularity.desc&region=PL&with_images=true&language=pl&with_backdrop=true&page=${getRandomNumber()}`,
-    title: 'Najlepiej oceniane filmy!',
+    title: 'Top rated movies!',
     media_type: 'movie',
   },
   {
     id: 'best-tv',
     link: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&sort_by=vote_average.desc&region=PL&with_images=true&language=pl&with_backdrop=true&vote_count.gte=10&page=${getRandomNumber()}
     `,
-    title: 'Odkryj nowe seriale!',
+    title: 'Discover new TV shows!',
     media_type: 'tv',
   },
   {
     id: 'on_the_air-tv',
     link: `https://api.themoviedb.org/3/tv/on_the_air?api_key=${API_KEY}&sort_by=vote_average.desc&region=PL&with_images=true&language=pl&with_backdrop=true&vote_count.gte=10&page=${getRandomNumber()}
     `,
-    title: 'Nadchodzące seriale',
+    title: 'Upcoming TV shows!',
     media_type: 'tv',
   },
   {
     id: 'popular-tv',
     link: `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&sort_by=vote_average.desc&region=PL&with_images=true&language=pl&with_backdrop=true&vote_count.gte=10${getRandomNumber()}
     `,
-    title: 'Najpopularniejsze seriale!',
+    title: 'The most popular TV shows!',
     media_type: 'tv',
   },
   {
     id: 'top-rated-tv',
     link: `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&sort_by=vote_average.desc&region=PL&with_images=true&language=pl&with_backdrop=true&vote_count.gte=10${getRandomNumber()}
     `,
-    title: 'Najlepiej oceniane seriale!',
+    title: 'Top rated TV shows!',
     media_type: 'tv',
   },
 ];

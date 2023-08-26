@@ -7,7 +7,7 @@ const NavBar = () => {
       <img className='h-10 md:h-14' src={Logo} alt='Logo' />
       <div className='flex pl-2 md:pl-8 lg:pl-12 space-x-2 md:space-x-4'>
         <Link to='/' className='link-primary'>
-          Strona główna
+          Main Page
         </Link>
       </div>
     </nav>

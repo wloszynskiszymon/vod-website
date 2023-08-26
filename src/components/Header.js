@@ -45,12 +45,13 @@ const Header = () => {
       >
         <article className='flex flex-col justify-end items-center w-full mt-36 lg:mt-60'>
           <h1 className='text-4xl lg:text-6xl font-extrabold text-gray-300 mb-4 tracking-wider'>
-            Odkryj Filmi
+            Discover Filmi
             <span className='text-purple-500 font-bold'>X</span>
           </h1>
           <p className='text-xl md:text-2xl lg:text-3xl text-gray-300 tracking-tighter'>
-            Najlepsze <span className='text-purple-500 font-bold'>filmy </span>i
-            <span className='text-purple-500 font-bold'> seriale!</span>
+            The best <span className='text-purple-500 font-bold'>movies </span>
+            and
+            <span className='text-purple-500 font-bold'> TV shows!</span>
           </p>
         </article>
         <div className='flex justify-between items-center flex-col w-full relative h-[14rem] lg:h-[20rem] pb-3 pt-6 lg:pt-1'>

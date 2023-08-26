@@ -20,7 +20,7 @@ const Footer = () => {
             rel='noreferrer'
             className='text-gray-600 hover:underline underline-offset-2'
           >
-            Copyright &#169; 2023 Szymon
+            Copyright &#169; 2023 Szymon (GITHUB)
           </a>
         </div>
       </div>

@@ -1,39 +1,44 @@
-### Krótko o zadaniu
+### In short about this project
 
-Mam nadzieję, że wszystko co było potrzebne zawarłem w zadaniu. Zrobiłem minimalistycznie prostą w obsłudzę stronę one-page
-starając się nie komplikować jej zbyt mocno. Dodałem też małe dodatki estetyczne. :)
+It's a simple VOD website, I'm constantly updating it and enhancing it as well as code while learning new patterns and technologies.
+I try to practice here many popular technologies and libraries, even though some aren't so necessary here.
 
-### Żeby zacząć
+### Current technologies:
+
+- React.js
+- Redux.js
+- React Router
+- Tailwind
+
+## Coming soon:
+
+- Implementing React Query
+- Adding lazy loading and skeleton layout when loading
+- More pages, filtering genres, tv shows, movies etc.
+- More Redux opportunities
+- Restructuring code and making components more generic and reusable
+- Using even more popular libraries
+-
+
+### To start
 
 Link
-https://pizzeria-website-szymon.netlify.app/
+https://vod-website-szymon.netlify.app/
 
-## LUB
+## OR
 
-1. Należy pobrać repozytorium
+1. Download repository
 
-2. Wpisać w folderze głównym poniższe komendy:
+2. Navigate to project folder and type:
 
 ```bash
 npm install
 ```
 
-3. Run
+3. After installing, run:
 
 ```bash
 npm start
 ```
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-##
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- - Early version of this project used to be recruitment task for polish company, so old commits are in Polish, now it's 100% English.
