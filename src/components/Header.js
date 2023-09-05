@@ -1,35 +1,9 @@
-import { API_KEY } from '../utilities/constants';
-import React, { useEffect, useState } from 'react';
 import InputSearch from './UI/InputSearch';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchMedia } from '../store/media-slice';
-
-const API_URL_MOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&with_media_type=movie&region=pl`;
+import useRandomImage from '../hooks/useRandomImage';
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const [image, setImage] = useState(null);
-
-  const { status: headerStatus, data: headerData } = useSelector(
-    (state) => state.mediaSlice.header
-  );
-
-  useEffect(() => {
-    if (headerStatus === 'idle') {
-      dispatch(fetchMedia({ link: API_URL_MOVIES, dataLocation: 'header' }));
-    }
-  }, [dispatch, headerData, headerStatus]);
-
-  useEffect(() => {
-    if (headerStatus === 'succeeded') {
-      const index = Math.floor(Math.random() * headerData.length);
-      const imagePath = headerData[index]
-        ? `https://image.tmdb.org/t/p/original/${headerData[index].backdrop_path}`
-        : null;
-      setImage(imagePath);
-    }
-  }, [headerData, headerStatus]);
+  const { data: image } = useRandomImage();
 
   return (
     <header id='start' className='relative bg-gray-900 flex-center w-full'>

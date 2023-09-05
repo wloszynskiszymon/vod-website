@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { PulseLoader } from 'react-spinners';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -7,119 +6,79 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import StarIcon from '../components/UI/Icons/StarIcon';
 import TabBox from '../components/TabBox/TabBox';
-import TabMediaTiles from '../components/TabBox/TabBoxTabs/TabMediaTiles';
+
+import { fetchBetterImages, formatTime } from '../utilities/UtilitiesFunctions';
+
+import { useQuery } from '@tanstack/react-query';
+
+import useURL from '../hooks/useURL';
+import TabCollection from '../components/TabBox/TabBoxTabs/TabCollection';
 import TabDetails from '../components/TabBox/TabBoxTabs/TabDetails';
+import TabSimilar from '../components/TabBox/TabBoxTabs/TabSimilar';
 
-import { formatTime } from '../utilities/UtilitiesFunctions';
-import { API_KEY } from '../utilities/constants';
-
-const initialState = {
-  status: 'idle',
-  data: null,
-  similarMovies: [],
-  collection: null,
-  formattedData: {
-    ready: false,
-    posterPath: null,
-    year: null,
-    tabsData: [],
-    belongs_to_collection: false,
-  },
+const fetchData = async (url) => {
+  const data = await axios.get(url);
+  return data.data;
 };
 
+const fetchCollection = async (url, mediaType) => {
+  const data = await fetchData(url);
+  const dataWithImages = await fetchBetterImages(data.parts);
+  const finalData = dataWithImages.map((singleData) => {
+    return { mediaType, ...singleData };
+  });
+  return finalData;
+};
+
+// const fetchSimilar = async (url, mediaType) => {
+//   const data = await fetchData(url);
+//   const formatedData = data.results.map((singleData) => {
+//     return { ...singleData, media_type: mediaType };
+//   });
+//   const finalData = await fetchBetterImages(formatedData);
+//   return finalData;
+// };
+
 const MoviePage = () => {
-  const { media_type, id } = useParams();
+  const { mediaType, id } = useParams();
 
-  const [mediaDetails, setMediaDetails] = useState(initialState);
+  const mediaURL = useURL(`${mediaType}/${id}`);
 
-  useEffect(() => {
-    const fetchMediaDetails = async () => {
-      try {
-        const mainMovieLink = `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${API_KEY}`;
-        const similarQueryLink = `https://api.themoviedb.org/3/${media_type}/${id}/similar?api_key=${API_KEY}`;
+  const { data: mediaData, isSuccess: mediaIsSuccess } = useQuery({
+    queryKey: [`media-${mediaType}-${id}`],
+    queryFn: () => fetchData(mediaURL),
 
-        const [mainMovieResponse, similarResponse] = await axios.all([
-          axios.get(mainMovieLink),
-          axios.get(similarQueryLink),
-        ]);
+    staleTime: Infinity,
+  });
 
-        const mainMovieData = mainMovieResponse.data;
-        const similarMovies = similarResponse.data.results;
+  const collectionURL = useURL(
+    `collection/${mediaData?.belongs_to_collection?.id}`
+  );
 
-        const belongs_to_collection = !!mainMovieData.belongs_to_collection;
+  const { data: collectionData, isSuccess: collectionIsSuccess } = useQuery({
+    queryKey: [`collection-${mediaType}-${id}`],
+    queryFn: () => fetchCollection(collectionURL, mediaType),
+    staleTime: Infinity,
+    enabled: !!mediaData?.belongs_to_collection,
+  });
 
-        let collectionResponse = null;
-        if (belongs_to_collection) {
-          const collectionId = mainMovieData.belongs_to_collection?.id;
-          if (collectionId) {
-            const collectionQuery = `https://api.themoviedb.org/3/collection/${collectionId}?api_key=${API_KEY}`;
-            collectionResponse = await axios.get(collectionQuery);
-          }
-        }
+  // Release year for movies
+  // First air date for tv series
+  const year = new Date(
+    mediaData?.release_date || mediaData?.first_air_date
+  ).getFullYear();
 
-        const formattedData = {
-          posterPath: `https://image.tmdb.org/t/p/original/${mainMovieData.poster_path}`,
-          year: new Date(
-            mainMovieData.release_date || mainMovieData.first_air_date
-          ).getFullYear(),
-          tabsData: [
-            {
-              name: 'details',
-              label: 'details',
-              content: <TabDetails data={mainMovieData} />,
-            },
-            {
-              name: 'similar',
-              label: 'similar',
-              content: (
-                <TabMediaTiles data={{ media_type, data: similarMovies }} />
-              ),
-            },
-            belongs_to_collection
-              ? {
-                  name: 'belongs_to_collection',
-                  label: 'Collection',
-                  content: (
-                    <TabMediaTiles
-                      data={{ media_type, data: collectionResponse.data.parts }}
-                    />
-                  ),
-                }
-              : [],
-          ],
-          ready: false,
-        };
+  // Movie runtime for movies
+  // Amount of seasons for tv series
+  const runtime = mediaData?.runtime
+    ? formatTime(mediaData?.runtime)
+    : `${mediaData?.number_of_seasons} season${
+        mediaData?.number_of_seasons > 1 ? 's' : ''
+      }`;
 
-        setMediaDetails((prevMediaDetails) => ({
-          ...prevMediaDetails,
-          data: mainMovieData,
-          formattedData: formattedData,
-          similarMovies: similarMovies,
-          collection: collectionResponse?.data || null,
-          status: 'succeeded',
-        }));
-      } catch (error) {
-        console.error('Error fetching media:', error);
-        setMediaDetails((prevMediaDetails) => ({
-          ...prevMediaDetails,
-          status: 'failed',
-        }));
-      }
-    };
-
-    if (!initialState.data) {
-      setMediaDetails((prevMediaDetails) => ({
-        ...prevMediaDetails,
-        status: 'loading',
-      }));
-
-      fetchMediaDetails();
-    }
-
-    return () => {
-      setMediaDetails(initialState);
-    };
-  }, [media_type, id]);
+  const shouldRenderTabBox =
+    mediaIsSuccess &&
+    (!mediaData?.belongs_to_collection || collectionIsSuccess);
 
   return (
     <div className='overflow-hidden relative '>
@@ -128,11 +87,11 @@ const MoviePage = () => {
         <div
           className={`w-full h-full lg:w-3/4 lg:h-5/6 z-10 relative md:my-12 bg-gray-900 grid grid-cols-3 grid-rows-6 lg:rounded-2xl md:shadow-2xl`}
         >
-          {mediaDetails.status === 'succeeded' && (
+          {mediaIsSuccess && (
             <>
               <div className='w-full h-full md:row-span-full row-span-2 col-span-1 flex justify-center align-center'>
                 <img
-                  src={mediaDetails.formattedData.posterPath}
+                  src={`https://image.tmdb.org/t/p/original/${mediaData.poster_path}`}
                   className='h-full p-4 pt-16 md:pt-4'
                   alt='poster'
                 />
@@ -141,12 +100,12 @@ const MoviePage = () => {
               <section className='w-full px-1 md:px-4 row-span-2 col-span-2'>
                 <div className=' w-full font-bold flex justify-between items-start uppercase pt-20 md:pt-8'>
                   <h1 className='text-fuchsia-200 text-md md:text-3xl'>
-                    {mediaDetails.data?.title || mediaDetails.data?.name}
+                    {mediaData.title || mediaData.name}
                   </h1>
                   <aside className='flex justify-center items-center'>
                     <p className='text-white text-md md:text-3xl translate-x-2 md:translate-x-0'>
-                      {mediaDetails.data?.vote_average &&
-                        parseFloat(mediaDetails.data?.vote_average.toFixed(1))}
+                      {mediaData.vote_average &&
+                        parseFloat(mediaData.vote_average.toFixed(1))}
                     </p>
                     <figure className='w-12 h-12 scale-[40%] md:scale-[70%]'>
                       <StarIcon />
@@ -154,27 +113,44 @@ const MoviePage = () => {
                   </aside>
                 </div>
                 <div className='flex w-full text-gray-400 text-sm md:text-md '>
-                  <p>
-                    {mediaDetails.formattedData?.year} |{' '}
-                    {mediaDetails.data?.runtime
-                      ? formatTime(mediaDetails.data?.runtime)
-                      : `${mediaDetails.data?.number_of_seasons} season${
-                          mediaDetails.data?.number_of_seasons > 1 ? 's' : ''
-                        }`}
-                  </p>
+                  <p>{[year, runtime].join(' | ')}</p>
                 </div>
                 <article className='text-gray-400 mt-2 text-sm md:text-md'>
-                  {mediaDetails.data?.tagline}
+                  {mediaData?.tagline}
                 </article>
               </section>
               <div className='md:col-span-2 row-span-5 col-span-full px-4 mt-6 md:-translate-y-20'>
-                {mediaDetails.formattedData.tabsData.length > 0 && (
-                  <TabBox tabs={mediaDetails.formattedData?.tabsData} />
+                {shouldRenderTabBox && (
+                  <TabBox initialActiveTab={'details'}>
+                    <TabBox.ButtonContainer>
+                      <TabBox.Button name={'details'}>Details</TabBox.Button>
+                      <TabBox.Button name={'similar'}>Similar</TabBox.Button>
+                      {collectionData && (
+                        <TabBox.Button name={'collection'}>
+                          Collection
+                        </TabBox.Button>
+                      )}
+                    </TabBox.ButtonContainer>
+                    <TabBox.Content>
+                      <TabDetails data={mediaData} name={'details'} />
+                      {collectionData && (
+                        <TabCollection
+                          data={collectionData}
+                          name={'collection'}
+                        />
+                      )}
+                      <TabSimilar
+                        name={'similar'}
+                        mediaType={mediaType}
+                        id={id}
+                      />
+                    </TabBox.Content>
+                  </TabBox>
                 )}
               </div>
             </>
           )}
-          {mediaDetails.status === 'loading' && (
+          {!shouldRenderTabBox && (
             <div className='col-span-full row-span-full w-full h-full flex justify-center items-center'>
               <PulseLoader color={'Silver'} size={20} />
             </div>
