@@ -42,6 +42,10 @@ const SearchPage = () => {
 
   const onChangeHandler = (e) => {
     const query = e.target.value;
+    if (query === '') {
+      navigate(-1);
+      return;
+    }
     setInputValue(query);
     navigate(`/search?q=${query}`);
   };

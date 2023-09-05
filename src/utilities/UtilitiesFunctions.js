@@ -123,7 +123,7 @@ export const handleInfiniteScroll = (
   const container = scrollContainerRef.current;
   if (
     container &&
-    container.scrollTop + container.clientHeight >= container.scrollHeight
+    container.scrollTop + container.clientHeight >= container.scrollHeight - 150
   ) {
     if (hasNextPage && !isFetchingNextPage) {
       fetchNextPage();

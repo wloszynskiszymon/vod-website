@@ -42,7 +42,9 @@ const useInfiniteScroll = (baseURL, options = {}, mediaType = null) => {
     },
     staleTime: Infinity,
     enabled: options.query !== '',
-    getNextPageParam: (_, allPage) => {},
+    getNextPageParam: (lastPage, allPage) => {
+      return allPage.length + 1;
+    },
     onSuccess: () => {
       if (otherProps.isSuccess && initial) {
         otherProps.fetchNextPage();
@@ -60,8 +62,6 @@ const useInfiniteScroll = (baseURL, options = {}, mediaType = null) => {
     () => searchData?.pages.flatMap((page) => page),
     [searchData]
   );
-
-  console.log(allSearchData);
 
   useEffect(() => {
     if (otherProps.isSuccess && initial) {
