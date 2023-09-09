@@ -1,4 +1,3 @@
-import NavBar from '../components/NavBar';
 import DeleteIcon from '../components/UI/Icons/DeleteIcon';
 import { useRef, useState } from 'react';
 
@@ -58,8 +57,7 @@ const SearchPage = () => {
 
   return (
     <div className='overflow-hidden w-screen h-screen'>
-      <NavBar />
-      <div className='w-full h-16 bg-blue-950 transform translate-y-20 flex flex-center px-6 '>
+      <div className='w-full h-16 bg-blue-950 transform translate-y-20 flex-center px-6 '>
         <input
           placeholder='Wpisz nazwę filmu lub serialu...'
           type='text'
@@ -89,14 +87,15 @@ const SearchPage = () => {
       >
         <div className='grid grid-cols-2 md:grid-cols-3 lg-grid-cols-4 xl:grid-cols-6 gap-4 w-full h-fit p-6'>
           {isSuccess && renderMovieTiles(data)}
-          {isError && (
-            <p className='text-gray-300 text-1xl text-center col-span-full'>
-              No results found.
-            </p>
-          )}
+          {isError ||
+            (isSuccess && !!data && (
+              <p className='text-gray-300 text-1xl text-center col-span-full'>
+                No results found.
+              </p>
+            ))}
           {isLoading && (
             <div className='col-span-full justify-self-center'>
-              <PulseLoader color={'Silver'} size={20} />
+              <PulseLoader color={'Silver'} size={16} />
             </div>
           )}
         </div>

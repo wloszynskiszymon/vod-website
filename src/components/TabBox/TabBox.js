@@ -18,7 +18,7 @@ const TabBox = ({ children, initialActiveTab }) => {
 
 const ButtonContainer = ({ children }) => {
   return (
-    <div className='flex gap-6 sm:gap-8 w-fit text-gray-300 border-b-2 pb-[2px] my-2 sm:my-4 text-md sm:text-lg'>
+    <div className='flex gap-4 sm:gap-8 w-fit text-gray-300 border-b-2 pb-[2px] my-4 text-md sm:text-lg'>
       {children}
     </div>
   );

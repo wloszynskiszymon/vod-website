@@ -6,20 +6,30 @@ import MovieTile from '../MovieTile';
 
 const MainCarousel = ({ data, title }) => {
   const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+    desktop_xl: {
+      breakpoint: { max: 1920, min: 1366 },
       items: 6,
-      slidesToSlide: 6, // optional, default to 1.
+      slidesToSlide: 6,
+    },
+    desktop: {
+      breakpoint: { max: 1366, min: 1200 },
+      items: 5,
+      slidesToSlide: 5,
+    },
+    laptop: {
+      breakpoint: { max: 1200, min: 768 },
+      items: 4,
+      slidesToSlide: 4,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 3, // optional, default to 1.
+      breakpoint: { max: 768, min: 464 },
+      items: 3,
+      slidesToSlide: 3,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 2,
-      slidesToSlide: 2, // optional, default to 1.
+      slidesToSlide: 2,
     },
   };
 
@@ -27,7 +37,7 @@ const MainCarousel = ({ data, title }) => {
     <div className='relative w-full h-full pt-8 my-8'>
       <h2
         id='testing'
-        className='absolute top-0 left-0  px-8 text-gray-300 font-extrabold text-md md:text-2xl uppercase tracking-wider '
+        className='absolute top-0 left-0 px-4 md:px-6 lg:px-8 text-gray-300 font-extrabold text-lg md:text-xl lg:text-2xl uppercase tracking-wider '
       >
         <p>{title}</p>
       </h2>
@@ -35,11 +45,11 @@ const MainCarousel = ({ data, title }) => {
         responsive={responsive}
         showDots={true}
         infinite={true}
-        itemClass={'px-1 md:px-4'}
+        itemClass={'px-2 lg:px-4'}
         customDot={<CarouselDot />}
         dotListClass='carousel-dot-list-overriden pointer-events-none'
         renderDotsOutside={true}
-        containerClass='py-4'
+        containerClass='py-2 md:py-4'
         customRightArrow={<CarouselArrow.Right />}
         customLeftArrow={<CarouselArrow.Left />}
         swipeable={false}

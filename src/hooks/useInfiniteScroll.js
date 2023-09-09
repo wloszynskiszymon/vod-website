@@ -26,7 +26,12 @@ const fetchSearchDataAndImages = async ({
   }
 };
 
-const useInfiniteScroll = (baseURL, options = {}, mediaType = null) => {
+const useInfiniteScroll = (
+  baseURL,
+  options = {},
+  mediaType = null,
+  enabled = true
+) => {
   const [initial, setInitial] = useState(true);
   const [q, setQ] = useState(options.query);
   const builtURL = useURL(baseURL, { ...options });
@@ -41,10 +46,10 @@ const useInfiniteScroll = (baseURL, options = {}, mediaType = null) => {
       });
     },
     staleTime: Infinity,
-    enabled: options.query !== '',
     getNextPageParam: (lastPage, allPage) => {
       return allPage.length + 1;
     },
+    enabled: enabled,
     onSuccess: () => {
       if (otherProps.isSuccess && initial) {
         otherProps.fetchNextPage();
@@ -77,9 +82,19 @@ const useInfiniteScroll = (baseURL, options = {}, mediaType = null) => {
     }
   }, [q, options.query]);
 
+  const resetDataAndHook = () => {
+    otherProps.remove();
+    setInitial(true);
+  };
+
+  // Has fetched 2 first pages.
+  const isFinalSuccess = otherProps.isSuccess && initial === false;
+
   return {
     data: allSearchData,
     ...otherProps,
+    resetDataAndHook,
+    isFinalSuccess,
   };
 };
 

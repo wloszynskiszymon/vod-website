@@ -1,8 +1,7 @@
 import { PulseLoader } from 'react-spinners';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import StarIcon from '../components/UI/Icons/StarIcon';
 import TabBox from '../components/TabBox/TabBox';
@@ -15,6 +14,7 @@ import useURL from '../hooks/useURL';
 import TabCollection from '../components/TabBox/TabBoxTabs/TabCollection';
 import TabDetails from '../components/TabBox/TabBoxTabs/TabDetails';
 import TabSimilar from '../components/TabBox/TabBoxTabs/TabSimilar';
+import { useEffect } from 'react';
 
 const fetchData = async (url) => {
   const data = await axios.get(url);
@@ -30,21 +30,17 @@ const fetchCollection = async (url, mediaType) => {
   return finalData;
 };
 
-// const fetchSimilar = async (url, mediaType) => {
-//   const data = await fetchData(url);
-//   const formatedData = data.results.map((singleData) => {
-//     return { ...singleData, media_type: mediaType };
-//   });
-//   const finalData = await fetchBetterImages(formatedData);
-//   return finalData;
-// };
-
-const MoviePage = () => {
+const DetailsPage = () => {
   const { mediaType, id } = useParams();
+  const navigate = useNavigate();
 
   const mediaURL = useURL(`${mediaType}/${id}`);
 
-  const { data: mediaData, isSuccess: mediaIsSuccess } = useQuery({
+  const {
+    data: mediaData,
+    isSuccess: mediaIsSuccess,
+    isError: mediaIsError,
+  } = useQuery({
     queryKey: [`media-${mediaType}-${id}`],
     queryFn: () => fetchData(mediaURL),
 
@@ -80,30 +76,33 @@ const MoviePage = () => {
     mediaIsSuccess &&
     (!mediaData?.belongs_to_collection || collectionIsSuccess);
 
+  useEffect(() => {
+    mediaIsError && navigate('/error');
+  }, [mediaIsError, navigate]);
+
   return (
-    <div className='overflow-hidden relative '>
-      <NavBar />
-      <header className='relative flex flex-center w-full md:h-[50rem] h-[45rem] bg-blue-950'>
+    <>
+      <header className='relative flex-center w-full pt-8 md:pt-12 h-[50rem] max-h-[50rem] md:h-[35rem] lg:h-[40rem] xl:h-[50rem] lg:max-h-full bg-gray-900 lg:bg-blue-950'>
         <div
-          className={`w-full h-full lg:w-3/4 lg:h-5/6 z-10 relative md:my-12 bg-gray-900 grid grid-cols-3 grid-rows-6 lg:rounded-2xl md:shadow-2xl`}
+          className={`w-full h-full lg:w-5/6 xl:w-3/4 lg:h-5/6 z-10 relative md:my-12 bg-gray-900 grid grid-cols-3 grid-rows-6 lg:rounded-2xl md:shadow-2xl`}
         >
           {mediaIsSuccess && (
             <>
-              <div className='w-full h-full md:row-span-full row-span-2 col-span-1 flex justify-center align-center'>
+              <div className='w-full h-full md:row-span-full row-span-2 col-span-1 flex-center mt-12 lg:mt-0'>
                 <img
                   src={`https://image.tmdb.org/t/p/original/${mediaData.poster_path}`}
-                  className='h-full p-4 pt-16 md:pt-4'
+                  className='md:max-h-[25rem] h-full lg:max-h-full md:self-start px-4 pb-4 lg:pt-4'
                   alt='poster'
                 />
               </div>
 
-              <section className='w-full px-1 md:px-4 row-span-2 col-span-2'>
-                <div className=' w-full font-bold flex justify-between items-start uppercase pt-20 md:pt-8'>
-                  <h1 className='text-fuchsia-200 text-md md:text-3xl'>
+              <section className='w-full px-1 md:px-4 row-span-2 col-span-2 mt-8 lg:mt-6'>
+                <div className='w-full font-bold flex justify-between items-center uppercase'>
+                  <h1 className='text-fuchsia-200 text-lg md:text-2xl lg:text-3xl'>
                     {mediaData.title || mediaData.name}
                   </h1>
-                  <aside className='flex justify-center items-center'>
-                    <p className='text-white text-md md:text-3xl translate-x-2 md:translate-x-0'>
+                  <aside className='flex-center'>
+                    <p className='text-white text-xl md:text-2xl lg:text-3xl translate-x-2 md:translate-x-0'>
                       {mediaData.vote_average &&
                         parseFloat(mediaData.vote_average.toFixed(1))}
                     </p>
@@ -119,7 +118,7 @@ const MoviePage = () => {
                   {mediaData?.tagline}
                 </article>
               </section>
-              <div className='md:col-span-2 row-span-5 col-span-full px-4 mt-6 md:-translate-y-20'>
+              <div className='md:col-span-2 row-span-5 col-span-full px-4 pb-20 lg:pb-2 xl:pb-0 mt-10 md:mt-6 md:-translate-y-10 lg:-translate-y-20 md:pb-12'>
                 {shouldRenderTabBox && (
                   <TabBox initialActiveTab={'details'}>
                     <TabBox.ButtonContainer>
@@ -152,14 +151,14 @@ const MoviePage = () => {
           )}
           {!shouldRenderTabBox && (
             <div className='col-span-full row-span-full w-full h-full flex justify-center items-center'>
-              <PulseLoader color={'Silver'} size={20} />
+              <PulseLoader color={'Silver'} size={16} />
             </div>
           )}
         </div>
       </header>
       <Footer />
-    </div>
+    </>
   );
 };
 
-export default MoviePage;
+export default DetailsPage;

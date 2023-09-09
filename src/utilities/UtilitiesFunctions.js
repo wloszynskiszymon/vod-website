@@ -105,14 +105,6 @@ export const renderMovieTiles = (mediaData) => {
   return movieTiles;
 };
 
-export const debounce = (func, delay) => {
-  let timeout;
-  return function (...args) {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), delay);
-  };
-};
-
 // Handle scroll for infinite Scroll
 export const handleInfiniteScroll = (
   scrollContainerRef,
@@ -120,12 +112,13 @@ export const handleInfiniteScroll = (
   hasNextPage,
   fetchNextPage
 ) => {
+  if (isFetchingNextPage) return;
   const container = scrollContainerRef.current;
   if (
     container &&
     container.scrollTop + container.clientHeight >= container.scrollHeight - 150
   ) {
-    if (hasNextPage && !isFetchingNextPage) {
+    if (hasNextPage) {
       fetchNextPage();
     }
   }

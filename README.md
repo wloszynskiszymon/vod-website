@@ -6,19 +6,21 @@ I try to practice here many popular technologies and libraries, even though some
 ### Current technologies:
 
 - React.js
-- Redux.js
 - React Router
+- React Query
 - Tailwind
 
-## Coming soon:
+## Could be added in the future:
 
-- Implementing React Query
 - Adding lazy loading and skeleton layout when loading
-- More pages, filtering genres, tv shows, movies etc.
-- More Redux opportunities
+- Adding better picture loading
 - Restructuring code and making components more generic and reusable
-- Using even more popular libraries
--
+- Better folder structure
+- Extracting some page parts into new components
+- Making page faster
+- Better and more detailed error handling
+
+- Used to have Redux, but React Query was entirely enough, so I removed it.
 
 ### To start
 

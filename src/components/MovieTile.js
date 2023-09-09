@@ -10,7 +10,7 @@ const MovieTile = ({ data }) => {
   const onClickHandler = () => navigate(`/${media_type}/${id}`);
 
   return (
-    <div className='bg-blue-950 group w-full h-[9rem] flex justify-center items-center relative border-2 border-gray-600 drop-shadow-2xl cursor-pointer rounded-xl overflow-hidden hover:border-white transition-all duration-200 hover:scale-105  '>
+    <div className='bg-blue-950 group w-full flex justify-center items-center relative border-2 border-gray-600 drop-shadow-2xl cursor-pointer rounded-xl overflow-hidden hover:border-white transition-all duration-200 hover:scale-105  '>
       <div
         onClick={onClickHandler}
         target='_blank'

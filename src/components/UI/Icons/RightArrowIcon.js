@@ -1,6 +1,6 @@
 const RightArrowIcon = () => {
   return (
-    <svg fill='#fff' height='100%' width='100%' viewBox='0 0 512.005 512.005'>
+    <svg fill='#bbb' height='100%' width='100%' viewBox='0 0 512.005 512.005'>
       <g>
         <g>
           <path
