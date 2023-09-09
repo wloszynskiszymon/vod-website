@@ -42,7 +42,7 @@ const SearchPage = () => {
   const onChangeHandler = (e) => {
     const query = e.target.value;
     if (query === '') {
-      navigate(-1);
+      navigate('/');
       return;
     }
     setInputValue(query);
@@ -88,7 +88,7 @@ const SearchPage = () => {
         <div className='grid grid-cols-2 md:grid-cols-3 lg-grid-cols-4 xl:grid-cols-6 gap-4 w-full h-fit p-6'>
           {isSuccess && renderMovieTiles(data)}
           {isError ||
-            (isSuccess && !!data && (
+            (!isSuccess && !!data && (
               <p className='text-gray-300 text-1xl text-center col-span-full'>
                 No results found.
               </p>

@@ -44,3 +44,17 @@
     margin-right: 2rem !important;
   }
 }
+
+@media (max-width: 515px) {
+  .xs-details-img {
+    width: 8rem;
+    min-width: 8rem;
+    height: 70%;
+    align-self: start;
+  }
+
+  .xs-details-tabbox {
+    transform: translateY(-5rem);
+    height: 108%;
+  }
+}

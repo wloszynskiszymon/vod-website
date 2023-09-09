@@ -91,7 +91,7 @@ const DetailsPage = () => {
               <div className='w-full h-full md:row-span-full row-span-2 col-span-1 flex-center mt-12 lg:mt-0'>
                 <img
                   src={`https://image.tmdb.org/t/p/original/${mediaData.poster_path}`}
-                  className='md:max-h-[25rem] h-full lg:max-h-full md:self-start px-4 pb-4 lg:pt-4'
+                  className='xs-details-img md:max-h-[25rem] h-full min-w-[11rem] lg:max-h-full md:self-start px-4 pb-4 lg:pt-4'
                   alt='poster'
                 />
               </div>
@@ -118,7 +118,7 @@ const DetailsPage = () => {
                   {mediaData?.tagline}
                 </article>
               </section>
-              <div className='md:col-span-2 row-span-5 col-span-full px-4 pb-20 lg:pb-2 xl:pb-0 mt-10 md:mt-6 md:-translate-y-10 lg:-translate-y-20 md:pb-12'>
+              <div className='xs-details-tabbox md:col-span-2 row-span-5 col-span-full px-4 pb-20 lg:pb-2 xl:pb-0 mt-10 md:mt-6 md:-translate-y-10 lg:-translate-y-20 md:pb-12'>
                 {shouldRenderTabBox && (
                   <TabBox initialActiveTab={'details'}>
                     <TabBox.ButtonContainer>
