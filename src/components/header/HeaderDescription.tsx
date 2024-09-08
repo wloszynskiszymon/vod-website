@@ -12,7 +12,7 @@ const HeaderDescription: React.FC<HeaderDescriptionProps> = ({
     <p
       {...props}
       className={cn(
-        `${className ? className : ""} text-xl tracking-tighter text-gray-300 md:text-2xl lg:text-3xl`,
+        `${className ? className : ""} tracking-tighter text-gray-300 md:tracking-tight xl:tracking-normal`,
       )}
     >
       {children}

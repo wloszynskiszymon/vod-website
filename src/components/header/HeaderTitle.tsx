@@ -13,7 +13,7 @@ const HeaderTitle: React.FC<HeaderTitleProps> = ({
     <h1
       {...props}
       className={cn(
-        `${className ? className : ""} mb-4 text-4xl font-extrabold tracking-wider text-gray-300 lg:text-6xl`,
+        `${className ? className : ""} font-extrabold tracking-wider text-gray-300`,
       )}
     >
       {children}
