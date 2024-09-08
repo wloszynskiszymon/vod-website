@@ -20,7 +20,6 @@ const useRandomImage = () => {
     queryKey: ['header'],
     queryFn: fetchRandomImage,
     staleTime: Infinity,
-    keepPreviousData: true,
   });
 };
 

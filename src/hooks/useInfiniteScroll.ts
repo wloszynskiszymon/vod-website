@@ -3,6 +3,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import useURL from './useURL';
 import { fetchBetterImages } from '../utilities/UtilitiesFunctions';
+import { FixMeLater } from '../types/types';
 
 const fetchSearchDataAndImages = async ({
   url,
@@ -27,13 +28,13 @@ const fetchSearchDataAndImages = async ({
 };
 
 const useInfiniteScroll = (
-  baseURL,
-  options = {},
-  mediaType = null,
-  enabled = true
+  baseURL: FixMeLater,
+  options: FixMeLater = {},
+  mediaType: FixMeLater = null,
+  enabled: FixMeLater = true
 ) => {
   const [initial, setInitial] = useState(true);
-  const [q, setQ] = useState(options.query);
+  const [q, setQ] = useState<FixMeLater>(options.query);
   const builtURL = useURL(baseURL, { ...options });
 
   const { data: searchData, ...otherProps } = useInfiniteQuery({
@@ -43,7 +44,7 @@ const useInfiniteScroll = (
         url: builtURL,
         page: pageParam,
         mediaType,
-      });
+      } as FixMeLater);
     },
     staleTime: Infinity,
     getNextPageParam: (lastPage, allPage) => {

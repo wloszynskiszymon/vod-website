@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { fetchBetterImages } from '../utilities/UtilitiesFunctions';
+import { FixMeLater } from '../types/types';
 
-const fetchMedia = async (url, mediaType) => {
+const fetchMedia = async (url: FixMeLater, mediaType: FixMeLater) => {
   if (url.length === 0) return { data: [] };
 
   const res = await axios.get(url);
@@ -12,14 +13,16 @@ const fetchMedia = async (url, mediaType) => {
   return readyData;
 };
 
-const useMediaImages = (data) => {
+const useMediaImages = (data: FixMeLater) => {
   const imageData = useQuery({
     queryKey: [`image-${data}`],
     queryFn: async () => {
       const results = await axios.all(
-        data.map(({ link, media_type }) => fetchMedia(link, media_type))
+        data.map(({ link, media_type }: FixMeLater) =>
+          fetchMedia(link, media_type)
+        )
       );
-      const titles = data.map(({ title }) => title);
+      const titles = data.map(({ title }: FixMeLater) => title);
 
       const combinedData = results.map((dataItem, index) => ({
         data: dataItem,
@@ -29,7 +32,6 @@ const useMediaImages = (data) => {
       return combinedData;
     },
     staleTime: Infinity,
-    keepPreviousData: true,
   });
 
   return imageData;

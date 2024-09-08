@@ -1,10 +1,12 @@
-export const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+import { FixMeLater } from '../types/types';
 
-const useURL = (base, queryParams) => {
+export const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+
+const useURL = (base: FixMeLater, queryParams: FixMeLater) => {
   const baseURL = `https://api.themoviedb.org/3/${base}`;
 
   const modified = { api_key: API_KEY, ...queryParams };
-  function createURL(queryParams) {
+  function createURL(queryParams: FixMeLater) {
     const queryString = Object.keys(queryParams)
       .map(
         (key) =>
