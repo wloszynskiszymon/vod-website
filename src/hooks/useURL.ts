@@ -2,7 +2,7 @@ import { FixMeLater } from '../types/types';
 
 export const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
-const useURL = (base: FixMeLater, queryParams: FixMeLater) => {
+const useURL = (base: FixMeLater, queryParams?: FixMeLater) => {
   const baseURL = `https://api.themoviedb.org/3/${base}`;
 
   const modified = { api_key: API_KEY, ...queryParams };

@@ -1,19 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { checkIsNew } from '../utilities/UtilitiesFunctions';
+import { FixMeLater } from '../types/types';
 
-const MovieTile = ({ data }) => {
-  const navigate = useNavigate();
-
+const MovieTile = ({ data }: FixMeLater) => {
   const { id, title, name, date, media_type, image } = data;
 
-  const onClickHandler = () => navigate(`/${media_type}/${id}`);
+  // const onClickHandler = () => navigate(`/${media_type}/${id}`);
 
   return (
     <div className='bg-blue-950 group w-full flex justify-center items-center relative border-2 border-gray-600 drop-shadow-2xl cursor-pointer rounded-xl overflow-hidden hover:border-white transition-all duration-200 hover:scale-105  '>
       <div
-        onClick={onClickHandler}
-        target='_blank'
+        // onClick={onClickHandler}
         rel='noreferrer'
         className='block w-full h-full'
       >

@@ -1,13 +1,11 @@
+import { FixMeLater } from '../../types/types';
 import SearchIcon from './Icons/SearchIcon';
-import { useNavigate } from 'react-router-dom';
 
-const InputSearch = (props) => {
-  const navigate = useNavigate();
-
-  const onChangeHandler = (e) => {
+const InputSearch = (props: FixMeLater) => {
+  const onChangeHandler = (e: FixMeLater) => {
     const word = e.target.value;
     if (word.length > 0) {
-      navigate(`/search?q=${word}`);
+      // navigate(`/search?q=${word}`);
     }
   };
 

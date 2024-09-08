@@ -1,3 +1,4 @@
+'use client';
 import InputSearch from './UI/InputSearch';
 
 import useRandomImage from '../hooks/useRandomImage';

@@ -15,10 +15,7 @@ const ErrorPage = () => {
             <h1 className='text-3xl md:text-[3rem] lg:text-[4rem] uppercase font-extrabold text-purple-300'>
               Page not found
             </h1>
-            <p
-              to='/'
-              className=' font-semibold text-sm md:text-lg lg:text-xl tracking-tighter drop-shadow-2xl transition duration-200 px-1 mb-2 text-white'
-            >
+            <p className=' font-semibold text-sm md:text-lg lg:text-xl tracking-tighter drop-shadow-2xl transition duration-200 px-1 mb-2 text-white'>
               Page you are looking for does not seem to exist.
             </p>
 

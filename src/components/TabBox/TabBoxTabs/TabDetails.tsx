@@ -1,10 +1,12 @@
+'use client';
 import React, { useContext } from 'react';
 
 import { formatObjectData } from '../../../utilities/UtilitiesFunctions';
 import { TabBoxContext } from '../TabBox';
+import { FixMeLater } from '../../../types/types';
 
-const TabDetails = React.memo(({ data, name }) => {
-  const { activeTab } = useContext(TabBoxContext);
+const TabDetails = React.memo(({ data, name }: FixMeLater) => {
+  const { activeTab } = useContext<FixMeLater>(TabBoxContext);
   if (activeTab !== name) {
     return null;
   }

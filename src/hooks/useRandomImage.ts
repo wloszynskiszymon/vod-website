@@ -1,7 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
+'use client';
 
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { API_KEY } from './useURL';
+import { FixMeLater } from '../types/types';
 
 const API_URL_MOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&with_media_type=movie&region=pl`;
 
@@ -16,7 +18,7 @@ const fetchRandomImage = async () => {
 };
 
 const useRandomImage = () => {
-  return useQuery({
+  return useQuery<FixMeLater>({
     queryKey: ['header'],
     queryFn: fetchRandomImage,
     staleTime: Infinity,

@@ -1,10 +1,12 @@
+'use client';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CarouselDot from './CarouselDot';
 import CarouselArrow from './CarouselArrow';
 import MovieTile from '../MovieTile';
+import { FixMeLater } from '../../types/types';
 
-const MainCarousel = ({ data, title }) => {
+const MainCarousel = ({ data, title }: FixMeLater) => {
   const responsive = {
     desktop_xl: {
       breakpoint: { max: 1920, min: 1366 },
@@ -54,7 +56,7 @@ const MainCarousel = ({ data, title }) => {
         customLeftArrow={<CarouselArrow.Left />}
         swipeable={false}
       >
-        {data.map((item) => (
+        {data.map((item: FixMeLater) => (
           <MovieTile key={item.media_type + item.id} data={item} />
         ))}
       </Carousel>

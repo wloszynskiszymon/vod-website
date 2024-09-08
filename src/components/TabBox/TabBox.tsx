@@ -1,11 +1,13 @@
+'use client';
 import React, { createContext, useState, useContext } from 'react';
+import { FixMeLater } from '../../types/types';
 
-export const TabBoxContext = createContext();
+export const TabBoxContext = createContext<FixMeLater>('');
 
-const TabBox = ({ children, initialActiveTab }) => {
+const TabBox = ({ children, initialActiveTab }: FixMeLater) => {
   const [activeTab, setActiveTab] = useState(initialActiveTab);
 
-  const onTabButtonClick = (tabName) => {
+  const onTabButtonClick = (tabName: FixMeLater) => {
     setActiveTab(tabName);
   };
 
@@ -16,7 +18,7 @@ const TabBox = ({ children, initialActiveTab }) => {
   );
 };
 
-const ButtonContainer = ({ children }) => {
+const ButtonContainer = ({ children }: FixMeLater) => {
   return (
     <div className='flex gap-4 sm:gap-8 w-fit text-gray-300 border-b-2 pb-[2px] my-4 text-md sm:text-lg'>
       {children}
@@ -24,7 +26,7 @@ const ButtonContainer = ({ children }) => {
   );
 };
 
-const Button = ({ children, name }) => {
+const Button = ({ children, name }: FixMeLater) => {
   const { activeTab, onTabButtonClick } = useContext(TabBoxContext);
   const isActive = name === activeTab;
 
@@ -44,7 +46,7 @@ const Button = ({ children, name }) => {
   );
 };
 
-const Content = ({ children }) => {
+const Content = ({ children }: FixMeLater) => {
   return <div className={`w-full h-full`}>{children}</div>;
 };
 

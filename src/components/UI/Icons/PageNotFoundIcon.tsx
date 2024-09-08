@@ -1,4 +1,6 @@
-const PageNotFoundIcon = ({ className, fill }) => {
+import { FixMeLater } from '../../../types/types';
+
+const PageNotFoundIcon = ({ className, fill }: FixMeLater) => {
   return (
     <svg
       className={className}

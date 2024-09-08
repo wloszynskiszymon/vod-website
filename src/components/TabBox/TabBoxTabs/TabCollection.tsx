@@ -1,9 +1,12 @@
+'use client';
+
 import { useContext } from 'react';
 import { renderMovieTiles } from '../../../utilities/UtilitiesFunctions';
 import { TabBoxContext } from '../TabBox';
+import { FixMeLater } from '../../../types/types';
 
-const TabCollection = ({ data, name }) => {
-  const { activeTab } = useContext(TabBoxContext);
+const TabCollection = ({ data, name }: FixMeLater) => {
+  const { activeTab } = useContext<FixMeLater>(TabBoxContext);
   if (activeTab !== name) {
     return null;
   }

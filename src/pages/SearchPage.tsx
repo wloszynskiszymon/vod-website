@@ -4,11 +4,11 @@ import { useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { PulseLoader } from 'react-spinners';
-import useInfiniteScroll from '../hooks/useInfiniteScroll';
 
 import { renderMovieTiles } from '../utilities/UtilitiesFunctions';
 
 import { handleInfiniteScroll } from '../utilities/UtilitiesFunctions';
+import { FixMeLater } from '../types/types';
 
 const SearchPage = () => {
   const location = useLocation();
@@ -16,22 +16,22 @@ const SearchPage = () => {
   const [inputValue, setInputValue] = useState('' || queryParameters.get('q'));
 
   const navigate = useNavigate();
-  const inputRef = useRef('');
-  const scrollContainerRef = useRef(null);
+  const inputRef = useRef<FixMeLater>('');
+  const scrollContainerRef = useRef<FixMeLater>(null);
 
-  const {
-    data,
-    isLoading,
-    isError,
-    isSuccess,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useInfiniteScroll('search/multi', {
-    query: inputValue,
-  });
+  // const {
+  //   data,
+  //   isLoading,
+  //   isError,
+  //   isSuccess,
+  //   fetchNextPage,
+  //   hasNextPage,
+  //   isFetchingNextPage,
+  // } = useInfiniteScroll('search/multi', {
+  //   query: inputValue,
+  // });
 
-  const onSearchHandler = (e) => {
+  const onSearchHandler = (e: FixMeLater) => {
     const query = e.target.value;
     if (e.key === 'Enter' && query.length !== 0) {
       setInputValue(query);
@@ -39,7 +39,7 @@ const SearchPage = () => {
     }
   };
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e: FixMeLater) => {
     const query = e.target.value;
     if (query === '') {
       navigate('/');
@@ -55,7 +55,7 @@ const SearchPage = () => {
     navigate('/');
   };
 
-  const noResultsCondition = isError || (isSuccess && data.length === 0);
+  // const noResultsCondition = isError || (isSuccess && data.length === 0);
 
   return (
     <div className='overflow-hidden w-screen h-screen'>
@@ -67,7 +67,7 @@ const SearchPage = () => {
           onChange={onChangeHandler}
           ref={inputRef}
           className='text-white bg-blue-950 font-bold text-3xl w-11/12 h-full outline-none'
-          value={inputValue}
+          value={inputValue!!}
           autoFocus
         />
         <div onClick={onClickHandler} className='cursor-pointer'>
@@ -78,17 +78,18 @@ const SearchPage = () => {
       <div
         className='w-full translate-y-28 h-full overflow-y-auto'
         ref={scrollContainerRef}
-        onScroll={() =>
-          handleInfiniteScroll(
-            scrollContainerRef,
-            isFetchingNextPage,
-            hasNextPage,
-            fetchNextPage
-          )
+        onScroll={
+          () => {}
+          // handleInfiniteScroll(
+          //   scrollContainerRef,
+          //   isFetchingNextPage,
+          //   hasNextPage,
+          //   fetchNextPage
+          // )
         }
       >
         <div className='grid grid-cols-2 md:grid-cols-3 lg-grid-cols-4 xl:grid-cols-6 gap-4 w-full h-fit p-6'>
-          {isSuccess && renderMovieTiles(data)}
+          {/* {isSuccess && renderMovieTiles(data)}
           {noResultsCondition && (
             <p className='text-gray-300 text-1xl text-center col-span-full'>
               No results found.
@@ -98,7 +99,7 @@ const SearchPage = () => {
             <div className='col-span-full justify-self-center'>
               <PulseLoader color={'Silver'} size={16} />
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

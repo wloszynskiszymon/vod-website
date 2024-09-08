@@ -1,4 +1,7 @@
-const CarouselDot = ({ onClick, active }) => {
+'use client';
+import { FixMeLater } from '../../types/types';
+
+const CarouselDot = ({ onClick, active }: FixMeLater) => {
   return (
     <button
       onClick={onClick}

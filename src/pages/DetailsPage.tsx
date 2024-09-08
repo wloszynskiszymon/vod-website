@@ -15,13 +15,14 @@ import TabCollection from '../components/TabBox/TabBoxTabs/TabCollection';
 import TabDetails from '../components/TabBox/TabBoxTabs/TabDetails';
 import TabSimilar from '../components/TabBox/TabBoxTabs/TabSimilar';
 import { useEffect } from 'react';
+import { FixMeLater } from '../types/types';
 
-const fetchData = async (url) => {
+const fetchData = async (url: FixMeLater) => {
   const data = await axios.get(url);
   return data.data;
 };
 
-const fetchCollection = async (url, mediaType) => {
+const fetchCollection = async (url: FixMeLater, mediaType: FixMeLater) => {
   const data = await fetchData(url);
   const dataWithImages = await fetchBetterImages(data.parts);
   const finalData = dataWithImages.map((singleData) => {

@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
-import '../index.css';
+import ReactQueryProvider from '../providers/ReactQueryProvider';
+import '../styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'FilmiX - Simple VOD website',
   description: 'FilmiX - Simple VOD website!',
-  themeColor: '#000000',
   keywords: ['movies', 'tv shows', 'vod'],
 };
 
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <div id='root'>{children}</div>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );

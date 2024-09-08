@@ -1,24 +1,26 @@
+'use client';
 import React, { useContext, useRef } from 'react';
-import useInfiniteScroll from '../../../hooks/useInfiniteScroll';
+// import useInfiniteScroll from '../../../hooks/useInfiniteScroll';
 import {
   handleInfiniteScroll,
   renderMovieTiles,
 } from '../../../utilities/UtilitiesFunctions';
 import { TabBoxContext } from '../TabBox';
 import { PulseLoader } from 'react-spinners';
+import { FixMeLater } from '../../../types/types';
 
-const TabSimilar = ({ mediaType, id, name }) => {
-  const { activeTab } = useContext(TabBoxContext);
+const TabSimilar = ({ mediaType, id, name }: FixMeLater) => {
+  const { activeTab } = useContext<FixMeLater>(TabBoxContext);
   const scrollContainerRef = useRef(null);
 
-  const {
-    data,
-    isSuccess,
-    isLoading,
-    isFetchingNextPage,
-    hasNextPage,
-    fetchNextPage,
-  } = useInfiniteScroll(`${mediaType}/${id}/similar`, {}, mediaType);
+  // const {
+  //   data,
+  //   isSuccess,
+  //   isLoading,
+  //   isFetchingNextPage,
+  //   hasNextPage,
+  //   fetchNextPage,
+  // } = useInfiniteScroll(`${mediaType}/${id}/similar`, {}, mediaType);
 
   if (activeTab !== name) {
     return null;
@@ -26,7 +28,7 @@ const TabSimilar = ({ mediaType, id, name }) => {
 
   return (
     <div className='w-full h-full'>
-      {isSuccess && (
+      {/* {isSuccess && (
         <div
           ref={scrollContainerRef}
           onScroll={() =>
@@ -46,7 +48,7 @@ const TabSimilar = ({ mediaType, id, name }) => {
         <div className='w-full h-full flex justify-center'>
           <PulseLoader color={'Silver'} size={20} />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
