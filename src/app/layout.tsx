@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Nav from "../features/nav/Nav";
 import ReactQueryProvider from "../providers/ReactQueryProvider";
 import "../styles/globals.css";
 
@@ -16,7 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <div className="overflow-hidden">
+            <Nav />
+            {children}
+          </div>
+        </ReactQueryProvider>
       </body>
     </html>
   );
