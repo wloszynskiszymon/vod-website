@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Nav from "../features/nav/Nav";
+import Nav from "../components/nav/Nav";
 import ReactQueryProvider from "../providers/ReactQueryProvider";
 import "../styles/globals.css";
 

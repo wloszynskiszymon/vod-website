@@ -1,8 +1,8 @@
 import Image from "next/image";
-import HeaderInput from "../../components/inputs/HeaderInput";
-import SearchIcon from "../../components/UI/Icons/SearchIcon";
-import TextImportant from "../../components/utils/TextImportant";
 import { fetchRandomImage } from "../../services/api/FetchRandomImage";
+import HeaderInput from "../inputs/HeaderInput";
+import SearchIcon from "../UI/Icons/SearchIcon";
+import TextImportant from "../utils/TextImportant";
 import HeaderDescription from "./Description";
 import HeaderTitle from "./Title";
 
@@ -21,7 +21,7 @@ const Header = async () => {
           src={original}
           blurDataURL={small || undefined}
           alt="Header background"
-          className={`absolute left-1/2 max-h-full -translate-x-1/2 bg-center object-cover lg:w-5/6`}
+          className={`absolute left-1/2 h-full max-h-full w-auto -translate-x-1/2 bg-center object-cover lg:w-5/6`}
         />
       )}
 

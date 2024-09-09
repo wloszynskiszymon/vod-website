@@ -1,10 +1,10 @@
 import Footer from "../components/Footer";
 
 import Main from "../components/Main";
-import Header from "../features/header/Header";
+import Header from "../components/header/Header";
 import MediaSliderList from "../features/slider/variants/MediaSliderList";
 
-const data = [0];
+const data = [0, 1, 2, 3, 4, 5, 6];
 const Page = () => {
   return (
     <>
