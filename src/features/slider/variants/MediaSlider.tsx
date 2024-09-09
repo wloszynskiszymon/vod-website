@@ -1,7 +1,7 @@
-import { FixMeLater } from "../../types/types";
-import Slider from "./components/Content";
-import SliderRoot from "./components/Root";
-import SliderTitle from "./components/Title";
+import { FixMeLater } from "../../../types/types";
+import Slider from "../components/Content";
+import SliderRoot from "../components/Root";
+import SliderTitle from "../components/Title";
 
 type MediaSliderProps = {
   data: FixMeLater;

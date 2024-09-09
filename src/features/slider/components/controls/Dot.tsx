@@ -1,7 +1,7 @@
 "use client";
-import { FixMeLater } from "../../../../types/types";
+import { DotProps } from "react-multi-carousel";
 
-const SliderDot = ({ onClick, active }: FixMeLater) => {
+const SliderDot = ({ onClick, active }: DotProps) => {
   return (
     <button
       aria-label="carousel-dot"

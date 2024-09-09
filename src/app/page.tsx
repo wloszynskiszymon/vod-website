@@ -2,7 +2,7 @@ import Footer from "../components/Footer";
 
 import Main from "../components/Main";
 import Header from "../features/header/Header";
-import MediaSliderList from "../features/slider/MediaSliderList";
+import MediaSliderList from "../features/slider/variants/MediaSliderList";
 
 const data = [0];
 const Page = () => {

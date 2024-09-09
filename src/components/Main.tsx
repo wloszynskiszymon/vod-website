@@ -1,5 +1,3 @@
-// import uniqid from 'uniqid';
-
 import { cn } from "../utilities/utils";
 
 type MainProps = React.PropsWithChildren & React.HTMLProps<HTMLDivElement>;
@@ -12,11 +10,6 @@ const Main = ({ children, className, ...props }: MainProps) => {
       )}
     >
       {children}
-      {/* <MainCarousel data={data} title={"Test"} /> */}
-      {/* {isSuccess &&
-        data.map(({ data: mediaData, title }) => (
-          <MainCarousel key={'uniqid()'} data={mediaData} title={title} />
-        ))} */}
     </main>
   );
 };
