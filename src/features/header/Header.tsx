@@ -1,10 +1,10 @@
 import Image from "next/image";
+import HeaderInput from "../../components/inputs/HeaderInput";
+import SearchIcon from "../../components/UI/Icons/SearchIcon";
+import TextImportant from "../../components/utils/TextImportant";
 import { fetchRandomImage } from "../../services/api/FetchRandomImage";
-import HeaderInput from "../inputs/HeaderInput";
-import SearchIcon from "../UI/Icons/SearchIcon";
-import TextImportant from "../utils/TextImportant";
-import HeaderDescription from "./HeaderDescription";
-import HeaderTitle from "./HeaderTitle";
+import HeaderDescription from "./Description";
+import HeaderTitle from "./Title";
 
 const gradient =
   "bg-gradient-to-r from-[rgba(17,24,39,0.6)] from-10% via-[rgba(17,24,39,0.6)] via-50% to-[rgba(17,24,39,0.6)] to-90% px-2 md:from-gray-900 md:via-[rgba(17,24,39,0.6)] md:to-gray-900";

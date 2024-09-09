@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "../../utilities/utils";
+import { cn } from "../../../utilities/utils";
 
 type SliderTitleProps = React.PropsWithChildren &
   React.HTMLProps<HTMLHeadingElement>;

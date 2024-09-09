@@ -2,8 +2,8 @@
 import { PropsWithChildren } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import SliderArrow from "./SliderArrow";
-import SliderDot from "./SliderDot";
+import Arrow from "./controls/Arrow";
+import SliderDot from "./controls/Dot";
 
 const sliderBreakpoints = {
   desktop_xl: {
@@ -33,8 +33,11 @@ const sliderBreakpoints = {
   },
 };
 
-type SliderProps = PropsWithChildren;
-const Slider: React.FC<SliderProps> = ({ children, ...props }) => {
+type SliderContentProps = PropsWithChildren;
+const SliderContent: React.FC<SliderContentProps> = ({
+  children,
+  ...props
+}) => {
   return (
     <Carousel
       {...props}
@@ -46,8 +49,8 @@ const Slider: React.FC<SliderProps> = ({ children, ...props }) => {
       dotListClass="carousel-dot-list-overriden pointer-events-none"
       renderDotsOutside={true}
       containerClass="py-2 md:py-4 h-32"
-      customRightArrow={<SliderArrow.Right />}
-      customLeftArrow={<SliderArrow.Left />}
+      customRightArrow={<Arrow.Right />}
+      customLeftArrow={<Arrow.Left />}
       swipeable={false}
     >
       {children}
@@ -55,4 +58,4 @@ const Slider: React.FC<SliderProps> = ({ children, ...props }) => {
   );
 };
 
-export default Slider;
+export default SliderContent;

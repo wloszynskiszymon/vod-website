@@ -1,5 +1,5 @@
 "use client";
-import { FixMeLater } from "../../types/types";
+import { FixMeLater } from "../../../../types/types";
 
 const SliderDot = ({ onClick, active }: FixMeLater) => {
   return (

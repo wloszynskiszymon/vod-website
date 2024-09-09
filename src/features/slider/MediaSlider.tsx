@@ -1,13 +1,14 @@
 import { FixMeLater } from "../../types/types";
-import Slider from "./Slider";
-import SliderTitle from "./SliderTitle";
+import Slider from "./components/Content";
+import SliderRoot from "./components/Root";
+import SliderTitle from "./components/Title";
 
 type MediaSliderProps = {
   data: FixMeLater;
 };
 const MediaSlider: React.FC<MediaSliderProps> = ({ data }) => {
   return (
-    <section>
+    <SliderRoot>
       <SliderTitle>Title here</SliderTitle>
       <Slider>
         {data.map((item: FixMeLater) => (
@@ -16,7 +17,7 @@ const MediaSlider: React.FC<MediaSliderProps> = ({ data }) => {
           </div>
         ))}
       </Slider>
-    </section>
+    </SliderRoot>
   );
 };
 

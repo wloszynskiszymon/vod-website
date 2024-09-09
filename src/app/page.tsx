@@ -1,8 +1,8 @@
 import Footer from "../components/Footer";
 
-import Header from "../components/header/Header";
 import Main from "../components/Main";
-import MediaSliderList from "../components/slider/MediaSliderList";
+import Header from "../features/header/Header";
+import MediaSliderList from "../features/slider/MediaSliderList";
 
 const data = [0];
 const Page = () => {
