@@ -52,6 +52,7 @@ const SliderContent: React.FC<SliderContentProps> = ({
       customRightArrow={<Arrow.Right />}
       customLeftArrow={<Arrow.Left />}
       swipeable={false}
+      partialVisbile={false}
     >
       {children}
     </Carousel>
