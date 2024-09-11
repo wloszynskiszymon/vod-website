@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { fetchRandomImage } from "../../services/api/FetchRandomImage";
+import { fetchRandomImage } from "../../services/tmdb/FetchRandomImage";
 import HeaderInput from "../inputs/HeaderInput";
 import SearchIcon from "../UI/Icons/SearchIcon";
 import TextImportant from "../utils/TextImportant";
@@ -13,7 +13,7 @@ const Header = async () => {
   const { small, original } = await fetchRandomImage();
 
   return (
-    <header className={`~h-[30rem]/[50rem] relative max-h-[90vh]`}>
+    <header className={`relative max-h-[90vh] ~h-[30rem]/[50rem]`}>
       {original && (
         <Image
           width={1920}
@@ -39,7 +39,7 @@ const Header = async () => {
           <TextImportant> TV shows!</TextImportant>
         </HeaderDescription>
 
-        <HeaderInput.Root className="~sm/2xl:~w-[25rem]/[50rem] mt-10 max-w-[90vw] xl:max-w-[60vw]">
+        <HeaderInput.Root className="mt-10 max-w-[90vw] ~sm/2xl:~w-[25rem]/[50rem] xl:max-w-[60vw]">
           <HeaderInput.Input className="lg:text-lg 2xl:text-xl" />
           <HeaderInput.Icon>
             <SearchIcon />

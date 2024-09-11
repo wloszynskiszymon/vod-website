@@ -2,7 +2,6 @@
 module.exports = {
   distDir: "./build", // Changes the build output directory to `./build`.
   images: {
-    domains: ["image.tmdb.org"],
     remotePatterns: [
       {
         protocol: "https",

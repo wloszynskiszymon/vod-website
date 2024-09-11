@@ -7,7 +7,7 @@ import {
   fetchTopRatedMovies,
   fetchTopRatedTVShows,
   fetchTVShowsOnTheAir,
-} from "@/services/api/slider";
+} from "@/services/tmdb/slider";
 
 export type SliderLink<T> = {
   promise: Promise<T>;

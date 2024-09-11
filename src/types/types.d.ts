@@ -1,10 +1,9 @@
 export type FixMeLater = any;
 
 export type SliderShow = {
-  id: string;
+  id: number;
   title: string;
-  mediaType: "movie" | "tv";
-  releaseData: string;
+  releaseDate: string;
   image: string;
 };
 
