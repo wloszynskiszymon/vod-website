@@ -1,7 +1,6 @@
-import MovieTile from '../components/MovieTile';
-import axios from 'axios';
-import { API_KEY } from '../hooks/useURL';
-import { FixMeLater } from '../types/types';
+import axios from "axios";
+import MovieTile from "../components/MovieTile";
+import { FixMeLater } from "../types/types";
 
 // Array of images
 export const fetchBetterImages = async (data: FixMeLater, mediaType = null) => {
@@ -18,7 +17,7 @@ export const fetchBetterImages = async (data: FixMeLater, mediaType = null) => {
     if (singleData.backdrop_path) {
       const imagesUrl = `https://api.themoviedb.org/3/${
         singleData.media_type ? singleData.media_type : mediaType
-      }/${singleData.id}/images?api_key=${API_KEY}`;
+      }/${singleData.id}/images?api_key=${""}`;
       return axios.get(imagesUrl);
     }
     return null;
@@ -27,13 +26,13 @@ export const fetchBetterImages = async (data: FixMeLater, mediaType = null) => {
   const axiosResponses = await axios.all(axiosRequests);
 
   const responsesWithBackdrop = axiosResponses.filter(
-    (res: FixMeLater) => res.data.backdrops.length > 0
+    (res: FixMeLater) => res.data.backdrops.length > 0,
   );
 
   // Map through the responses to get backdrop images
   const imagesLinks = responsesWithBackdrop.map((imagesData: FixMeLater) => {
     let backdrops = imagesData?.data?.backdrops.find(
-      (backdrop: FixMeLater) => backdrop.iso_639_1 === 'en' || null
+      (backdrop: FixMeLater) => backdrop.iso_639_1 === "en" || null,
     );
 
     // If not found english one, take just the first
@@ -68,8 +67,8 @@ export const formatTime = (minutes: FixMeLater) => {
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
 
-  const hoursString = hours > 0 ? `${hours}h ` : '';
-  const minutesString = remainingMinutes > 0 ? `${remainingMinutes}min` : '';
+  const hoursString = hours > 0 ? `${hours}h ` : "";
+  const minutesString = remainingMinutes > 0 ? `${remainingMinutes}min` : "";
 
   return hoursString + minutesString;
 };
@@ -83,11 +82,11 @@ export function checkIsNew(dateString: FixMeLater) {
 
 export const formatObjectData = (objArray: FixMeLater, objProp: FixMeLater) => {
   if (!objArray || !Array.isArray(objArray)) {
-    return '';
+    return "";
   }
 
   const dataStringArray = objArray.map((obj) => obj[objProp]);
-  return dataStringArray.join(' | ');
+  return dataStringArray.join(" | ");
 };
 
 export const renderMovieTiles = (mediaData: FixMeLater) => {
@@ -96,11 +95,11 @@ export const renderMovieTiles = (mediaData: FixMeLater) => {
   mediaData.forEach((singleData: FixMeLater) => {
     movieTiles.push(
       <div
-        className='w-full h-full'
+        className="h-full w-full"
         key={`collection-${singleData.id + Math.random()}`}
       >
         <MovieTile data={singleData} />
-      </div>
+      </div>,
     );
   });
   return movieTiles;
@@ -111,7 +110,7 @@ export const handleInfiniteScroll = (
   scrollContainerRef: FixMeLater,
   isFetchingNextPage: FixMeLater,
   hasNextPage: FixMeLater,
-  fetchNextPage: FixMeLater
+  fetchNextPage: FixMeLater,
 ) => {
   if (isFetchingNextPage) return;
   const container = scrollContainerRef.current;

@@ -1,12 +1,11 @@
-import axios from "axios";
 import Footer from "../components/Footer";
 
 import Main from "../components/Main";
 import Header from "../components/header/Header";
 
 const Page = async () => {
-  const { data } = await axios.get("http://localhost:3000/api/slider");
-  console.log(data);
+  // const { data } = await axios.get("http://localhost:3000/api/slider");
+  // console.log(data);
   // const id = data[0].data[0].id;
   // console.log(data[0].data[0]);
   // const imagesUrl = `https://api.themoviedb.org/3/movie/${id}/images?api_key=${API_KEY}`;

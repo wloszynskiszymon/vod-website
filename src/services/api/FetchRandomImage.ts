@@ -1,24 +1,27 @@
-import axios from "axios";
-import { API_KEY } from "../../hooks/useURL";
+import { tmdb } from "./tmdb";
 
 // Fetch random image from the discover section in order to display it in the header
 export const fetchRandomImage = async () => {
   try {
     // Fetch image data
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&with_media_type=movie&region=pl`;
-    const res = await axios.get(url);
-    const imageData = res.data.results;
+    const { results } = await tmdb.discover.movie({
+      sort_by: "popularity.desc",
+      region: "US",
+      language: "en-US",
+      page: 1,
+    });
 
     // If there is no image data, return null
-    if (imageData.length === 0) return { small: null, original: null };
+    if (results.length === 0) return { small: null, original: null };
 
     // Get random image - bad and good quality
-    const index = Math.floor(Math.random() * imageData.length);
-    const small = imageData[index]
-      ? `https://image.tmdb.org/t/p/w300${imageData[index].backdrop_path}`
+    const i = Math.floor(Math.random() * results.length);
+
+    const small = results[i]
+      ? `https://image.tmdb.org/t/p/w300${results[i].backdrop_path}`
       : null;
-    const original = imageData[index]
-      ? `https://image.tmdb.org/t/p/original${imageData[index].backdrop_path}`
+    const original = results[i]
+      ? `https://image.tmdb.org/t/p/original${results[i].backdrop_path}`
       : null;
     return { small, original };
   } catch (error) {
