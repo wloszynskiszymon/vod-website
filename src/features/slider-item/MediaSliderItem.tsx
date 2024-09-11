@@ -29,7 +29,7 @@ const MediaSliderItem = ({
       <TMDBImage
         size="w300"
         src={image}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover group-hover:blur-sm"
         alt={`${title}`}
       />
     </MediaSliderItemRoot>
