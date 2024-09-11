@@ -1,5 +1,4 @@
 import axios from "axios";
-import MovieTile from "../components/MovieTile";
 import { FixMeLater } from "../types/types";
 
 // Array of images
@@ -89,21 +88,21 @@ export const formatObjectData = (objArray: FixMeLater, objProp: FixMeLater) => {
   return dataStringArray.join(" | ");
 };
 
-export const renderMovieTiles = (mediaData: FixMeLater) => {
-  const movieTiles: FixMeLater = [];
+// export const renderMovieTiles = (mediaData: FixMeLater) => {
+//   const movieTiles: FixMeLater = [];
 
-  mediaData.forEach((singleData: FixMeLater) => {
-    movieTiles.push(
-      <div
-        className="h-full w-full"
-        key={`collection-${singleData.id + Math.random()}`}
-      >
-        <MovieTile data={singleData} />
-      </div>,
-    );
-  });
-  return movieTiles;
-};
+//   mediaData.forEach((singleData: FixMeLater) => {
+//     movieTiles.push(
+//       <div
+//         className="h-full w-full"
+//         key={`collection-${singleData.id + Math.random()}`}
+//       >
+//         <MovieTile data={singleData} />
+//       </div>,
+//     );
+//   });
+//   return movieTiles;
+// };
 
 // Handle scroll for infinite Scroll
 export const handleInfiniteScroll = (

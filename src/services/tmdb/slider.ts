@@ -12,7 +12,7 @@ import {
 import { tmdb } from "./tmdb";
 
 function getRandInt(): number {
-  return Math.floor(Math.random() * 10) + 1;
+  return Math.floor(Math.random() * 5) + 1;
 }
 
 export const fetchDiscoverMovies = (): Promise<MovieDiscoverResult> =>

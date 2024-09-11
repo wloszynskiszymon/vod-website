@@ -9,51 +9,45 @@ import {
   fetchTVShowsOnTheAir,
 } from "@/services/tmdb/slider";
 
-export type SliderLink<T> = {
-  promise: Promise<T>;
+export type SliderLink = {
+  fn: () => Promise<any>;
   title: string;
-  media_type: "movie" | "tv";
 };
 
-export const sliderLinks: SliderLink<any>[] = [
+export const sliderMoviesLinks: SliderLink[] = [
   {
-    promise: fetchDiscoverMovies(),
+    fn: fetchDiscoverMovies,
     title: "Discover the best movies!",
-    media_type: "movie",
   },
   {
-    promise: fetchMoviesNowPlaying(),
+    fn: fetchMoviesNowPlaying,
     title: "Now playing in theaters!",
-    media_type: "movie",
   },
   {
-    promise: fetchPopularMovies(),
+    fn: fetchPopularMovies,
     title: "The most popular movies!",
-    media_type: "movie",
   },
   {
-    promise: fetchTopRatedMovies(),
+    fn: fetchTopRatedMovies,
     title: "Top rated movies!",
-    media_type: "movie",
   },
+];
+
+export const sliderTVsLink: SliderLink[] = [
   {
-    promise: fetchDiscoverTVShows(),
+    fn: fetchDiscoverTVShows,
     title: "Discover new TV shows!",
-    media_type: "tv",
   },
   {
-    promise: fetchTVShowsOnTheAir(),
+    fn: fetchTVShowsOnTheAir,
     title: "Upcoming TV shows!",
-    media_type: "tv",
   },
   {
-    promise: fetchPopularTVShows(),
+    fn: fetchPopularTVShows,
     title: "The most popular TV shows!",
-    media_type: "tv",
   },
   {
-    promise: fetchTopRatedTVShows(),
+    fn: fetchTopRatedTVShows,
     title: "Top rated TV shows!",
-    media_type: "tv",
   },
 ];
