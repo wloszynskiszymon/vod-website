@@ -12,7 +12,7 @@ type ArrowContextType = {
 const ArrowContext = createContext<ArrowContextType | undefined>(undefined);
 
 const commonClasses =
-  "absolute flex-center top-25 h-4/5 w-8 md:w-12 bg-blue-950 bg-opacity-30 hover:bg-opacity-70 transition duration-200 z-20";
+  "absolute bottom-0 pointer-events-auto flex-center h-32 w-8 md:w-12 bg-blue-950 bg-opacity-30 hover:bg-opacity-70 transition duration-200 z-20";
 
 const Left = ({ onClick }: ArrowProps) => {
   return (
@@ -30,7 +30,7 @@ const Right = ({ onClick }: ArrowProps) => {
   return (
     <button
       aria-label="carousel-right-arrow"
-      className={`${commonClasses} right-0 rounded-l-3xl`}
+      className={`${commonClasses} right-0 z-30 rounded-l-3xl`}
       onClick={onClick}
     >
       <RightArrowIcon />

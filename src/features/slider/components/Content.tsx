@@ -2,8 +2,8 @@
 import { PropsWithChildren } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Arrow from "./controls/Arrow";
-import SliderDot from "./controls/Dot";
+import ButtonGroup from "./controls/ButtonGroup";
+import Dot from "./controls/Dot";
 
 const sliderBreakpoints = {
   desktop_xl: {
@@ -44,15 +44,15 @@ const SliderContent: React.FC<SliderContentProps> = ({
       responsive={sliderBreakpoints}
       showDots={true}
       infinite={true}
-      itemClass={"px-2 lg:px-4"}
-      customDot={<SliderDot />}
-      dotListClass="carousel-dot-list-overriden pointer-events-none"
+      itemClass="px-2 py-1"
+      customDot={<Dot />}
+      dotListClass="!top-3 !gap-2 !justify-end !mr-20 pointer-events-none"
       renderDotsOutside={true}
-      containerClass="py-2 md:py-4 h-32"
-      customRightArrow={<Arrow.Right />}
-      customLeftArrow={<Arrow.Left />}
+      renderButtonGroupOutside={true}
+      customButtonGroup={<ButtonGroup />}
       swipeable={false}
       partialVisbile={false}
+      arrows={false}
     >
       {children}
     </Carousel>

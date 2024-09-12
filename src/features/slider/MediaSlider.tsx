@@ -1,8 +1,6 @@
 import { SliderShow } from "@/types/types";
-import MediaSliderItem from "../slider-item/MediaSliderItem";
-import Slider from "./components/Content";
-import SliderRoot from "./components/Root";
-import SliderTitle from "./components/Title";
+import MediaSliderItem from "../SliderItem/MediaSliderItem";
+import { SliderContent, SliderRoot, SliderTitle } from "./components";
 
 type MediaSliderProps = {
   title: string;
@@ -18,7 +16,7 @@ const MediaSlider: React.FC<MediaSliderProps> = ({
   return (
     <SliderRoot>
       <SliderTitle>{title}</SliderTitle>
-      <Slider>
+      <SliderContent>
         {shows.map((show: SliderShow) => (
           <MediaSliderItem
             key={show.id + show.releaseDate}
@@ -26,7 +24,7 @@ const MediaSlider: React.FC<MediaSliderProps> = ({
             {...show}
           />
         ))}
-      </Slider>
+      </SliderContent>
     </SliderRoot>
   );
 };

@@ -1,12 +1,13 @@
+import React from "react";
+
 import TMDBImage from "@/assets/TMDBImage";
 import { SliderShow } from "@/types/types";
-import React from "react";
+import { checkIsNew } from "@/utilities/UtilitiesFunctions";
 import {
   MediaSliderItemBadge,
   MediaSliderItemRoot,
   MediaSliderItemTitle,
-} from ".";
-import { checkIsNew } from "../../utilities/UtilitiesFunctions";
+} from "./components";
 
 type SliderShowProps = SliderShow & {
   mediaType: "movie" | "tv";

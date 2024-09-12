@@ -35,13 +35,7 @@
 
 @layer components {
   .flex-center {
-    @apply flex justify-center items-center;
-  }
-
-  .carousel-dot-list-overriden {
-    @apply gap-2 top-3;
-    justify-content: end !important;
-    margin-right: 2rem !important;
+    @apply flex items-center justify-center;
   }
 }
 
