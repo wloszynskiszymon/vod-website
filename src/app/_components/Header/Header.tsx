@@ -1,8 +1,7 @@
+import TextImportant from "@/components/utils/TextImportant";
+import { fetchRandomImage } from "@/services/tmdb/FetchRandomImage";
 import Image from "next/image";
-import { fetchRandomImage } from "../../services/tmdb/FetchRandomImage";
-import HeaderInput from "../inputs/HeaderInput";
-import SearchIcon from "../UI/Icons/SearchIcon";
-import TextImportant from "../utils/TextImportant";
+import HeaderSearchInput from "../HeaderSearchInput";
 import HeaderDescription from "./Description";
 import HeaderTitle from "./Title";
 
@@ -39,12 +38,7 @@ const Header = async () => {
           <TextImportant> TV shows!</TextImportant>
         </HeaderDescription>
 
-        <HeaderInput.Root className="mt-10 max-w-[90vw] ~sm/2xl:~w-[25rem]/[50rem] xl:max-w-[60vw]">
-          <HeaderInput.Input className="lg:text-lg 2xl:text-xl" />
-          <HeaderInput.Icon>
-            <SearchIcon />
-          </HeaderInput.Icon>
-        </HeaderInput.Root>
+        <HeaderSearchInput />
       </section>
     </header>
   );

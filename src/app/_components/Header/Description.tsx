@@ -1,4 +1,4 @@
-import { cn } from "../../utilities/utils";
+import { cn } from "@/utilities/utils";
 
 type HeaderDescriptionProps = React.PropsWithChildren &
   React.HTMLProps<HTMLParagraphElement>;

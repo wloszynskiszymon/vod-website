@@ -1,18 +1,9 @@
-"use client";
-
 import { cn } from "../../../utilities/utils";
 
 const Input: React.FC<React.HTMLProps<HTMLInputElement>> = ({
   className,
   ...props
 }) => {
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const word = e.target.value;
-    if (word.length > 0) {
-      // navigate(`/search?q=${word}`);
-    }
-  };
-
   return (
     <input
       {...props}
@@ -21,7 +12,6 @@ const Input: React.FC<React.HTMLProps<HTMLInputElement>> = ({
       )}
       type="text"
       placeholder="Search..."
-      onChange={handleOnChange}
       autoFocus
     />
   );

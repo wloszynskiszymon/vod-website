@@ -1,5 +1,5 @@
+import { cn } from "@/utilities/utils";
 import React from "react";
-import { cn } from "../../utilities/utils";
 
 type HeaderTitleProps = React.PropsWithChildren &
   React.HTMLProps<HTMLHeadingElement>;
