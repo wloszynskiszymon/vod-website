@@ -10,15 +10,18 @@ const SearchInput = () => {
 
   const onSearchHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const query = e.currentTarget.value;
-    if (e.key === "Enter" && query.length !== 0) {
-      router.push(`/search?q=${query}`);
+    if (e.key === "Enter" && query.trim().length !== 0) {
+      router.push(`/search?q=${encodeURIComponent(query)}`);
     }
   };
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
-    if (query === "") router.push("/");
-    else router.replace(`/search?q=${query}`);
+    if (query.trim() === "") {
+      router.push("/");
+    } else {
+      router.replace(`/search?q=${encodeURIComponent(query)}`);
+    }
   };
 
   return (

@@ -47,7 +47,7 @@ const SearchPage = () => {
     <div className="h-screen w-screen">
       <SearchInput />
       <div className="h-full w-full translate-y-28 overflow-y-auto">
-        <div className="lg-grid-cols-4 grid h-fit w-full grid-cols-2 gap-4 p-6 md:grid-cols-3 xl:grid-cols-6">
+        <div className="grid h-fit w-full grid-cols-2 gap-4 p-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
           {isLoading && (
             <p className="text-1xl col-span-full text-center text-gray-300">
               Loading...
