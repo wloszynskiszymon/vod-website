@@ -18,12 +18,16 @@ const SearchResults = () => {
       className="h-full w-full translate-y-28 overflow-y-auto"
     >
       <InfiniteScrollContainer
-        className="grid h-fit w-full grid-cols-8 gap-4"
+        className="grid h-fit w-full grid-cols-8 gap-4 p-4"
         parentId="search-page-results"
         {...infiniteScrollResults}
       >
         {items.map((item) => (
-          <MediaSliderItem key={item.title + item.id} {...item} />
+          <MediaSliderItem
+            imageType="poster"
+            key={item.title + item.id}
+            {...item}
+          />
         ))}
       </InfiniteScrollContainer>
     </section>

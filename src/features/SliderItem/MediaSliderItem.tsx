@@ -11,6 +11,7 @@ import {
 
 type SliderShowProps = SliderShow & {
   mediaType: "movie" | "tv";
+  imageType?: "poster" | "backdrop";
 };
 
 const MediaSliderItem = ({
@@ -19,6 +20,7 @@ const MediaSliderItem = ({
   releaseDate,
   image,
   mediaType,
+  imageType = "backdrop",
 }: SliderShowProps) => {
   // const onClickHandler = () => navigate(`/${media_type}/${id}`);
   const isNew = checkIsNew(releaseDate);
@@ -28,6 +30,7 @@ const MediaSliderItem = ({
       <MediaSliderItemTitle>{title}</MediaSliderItemTitle>
       {isNew && <MediaSliderItemBadge>NEW</MediaSliderItemBadge>}
       <TMDBImage
+        imageType={imageType}
         size="w300"
         src={image}
         className="h-full w-full object-cover group-hover:blur-sm"
