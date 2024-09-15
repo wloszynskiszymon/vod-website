@@ -21,6 +21,7 @@ export async function GET(
   const filteredResults = results.results
     .map((item) => {
       if (item.media_type === "movie") {
+        if (!item.poster_path) return null;
         return {
           id: item.id,
           title: item.title,
@@ -29,6 +30,7 @@ export async function GET(
           mediaType: item.media_type,
         };
       } else if (item.media_type === "tv") {
+        if (!item.poster_path) return null;
         return {
           id: item.id,
           title: item.name,
