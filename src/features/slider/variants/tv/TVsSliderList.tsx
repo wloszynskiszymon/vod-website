@@ -1,4 +1,4 @@
-import { SliderLink } from "@/app/api/image/utils/urls";
+import { SliderLink } from "@/app/(api)/api/image/utils/urls";
 import React from "react";
 import TVsSlider from "./TVsSlider";
 
