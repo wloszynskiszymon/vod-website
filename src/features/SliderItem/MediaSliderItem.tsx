@@ -28,7 +28,9 @@ const MediaSliderItem = ({
   return (
     <MediaSliderItemRoot>
       <MediaSliderItemTitle>{title}</MediaSliderItemTitle>
-      {isNew && <MediaSliderItemBadge>NEW</MediaSliderItemBadge>}
+      {isNew && (
+        <MediaSliderItemBadge imageType={imageType}>NEW</MediaSliderItemBadge>
+      )}
       <TMDBImage
         imageType={imageType}
         size="w300"

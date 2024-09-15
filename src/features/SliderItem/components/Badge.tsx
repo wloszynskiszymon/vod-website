@@ -1,13 +1,22 @@
 import { cn } from "@/utilities/utils";
 import React from "react";
 
-type BadgeProps = React.PropsWithChildren & React.HTMLProps<HTMLDivElement>;
-const Badge = ({ children, className = "", ...props }: BadgeProps) => {
+type BadgeProps = React.PropsWithChildren &
+  React.HTMLProps<HTMLDivElement> & {
+    imageType: "poster" | "backdrop";
+  };
+
+const Badge = ({
+  children,
+  className = "",
+  imageType,
+  ...props
+}: BadgeProps) => {
   return (
     <div
       {...props}
       className={cn(
-        `${className} opacity-1 flex-center absolute -right-3 -top-3 h-1/4 w-full translate-x-1/3 translate-y-3/4 rotate-45 bg-purple-800 text-center text-[13px] tracking-wider text-white group-hover:opacity-0 sm:text-sm lg:-right-4 lg:-top-4`,
+        `${className} opacity-1 absolute right-1 top-1 rounded-lg bg-purple-900 bg-opacity-90 px-1 py-0.5 text-center text-xs tracking-wider text-white`,
       )}
     >
       {children}
