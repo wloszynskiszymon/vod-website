@@ -10,6 +10,12 @@ const SearchInput = () => {
 
   const onSearchHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const query = e.currentTarget.value;
+    // If empty query, go back to home page or ignore
+    if (query.trim().length === 0) {
+      if (e.key === "Backspace" || e.key === "Escape") return router.push("/");
+      return;
+    }
+
     if (e.key === "Enter" && query.trim().length !== 0) {
       router.push(`/search?q=${encodeURIComponent(query)}`);
     }
@@ -18,7 +24,7 @@ const SearchInput = () => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     if (query.trim() === "") {
-      router.push("/");
+      router.replace("/search");
     } else {
       router.replace(`/search?q=${encodeURIComponent(query)}`);
     }
