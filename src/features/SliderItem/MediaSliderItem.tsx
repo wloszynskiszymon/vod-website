@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
 
 import TMDBImage from "@/assets/TMDBImage";
 import { SliderShow } from "@/types/types";
 import { checkIsNew } from "@/utilities/UtilitiesFunctions";
+import { useRouter } from "next/navigation";
 import {
   MediaSliderItemBadge,
   MediaSliderItemRoot,
@@ -22,11 +24,10 @@ const MediaSliderItem = ({
   mediaType,
   imageType = "backdrop",
 }: SliderShowProps) => {
-  // const onClickHandler = () => navigate(`/${media_type}/${id}`);
   const isNew = checkIsNew(releaseDate);
-
+  const router = useRouter();
   return (
-    <MediaSliderItemRoot>
+    <MediaSliderItemRoot onClick={() => router.push(`/${mediaType}/${id}`)}>
       <MediaSliderItemTitle>{title}</MediaSliderItemTitle>
       {isNew && (
         <MediaSliderItemBadge imageType={imageType}>NEW</MediaSliderItemBadge>
