@@ -2,6 +2,7 @@ import TMDBImage from "@/assets/TMDBImage";
 import Card from "@/components/details/Card";
 import DetailsHeader from "@/components/details/DetailsHeader";
 import { tmdb } from "@/services/tmdb/tmdb";
+import TabboxesButtons from "../../../../components/details/TabboxesButtons";
 
 type PageParams = {
   params: {
@@ -14,12 +15,7 @@ const MovieDetails = async ({ params }: PageParams) => {
   const { poster_path, title, vote_average, release_date, runtime, tagline } =
     await tmdb.movies.details(id);
 
-  // Release year for movies
-  // First air date for tv series
   const year = new Date(release_date).getFullYear();
-
-  // Movie runtime for movies
-  // Amount of seasons for tv series
 
   return (
     <section className="flex-center relative h-[50rem] w-full pt-8 md:pt-12 lg:bg-gray-900">
@@ -39,6 +35,7 @@ const MovieDetails = async ({ params }: PageParams) => {
           runtime={runtime + " min"}
           releaseYear={year}
         />
+        <TabboxesButtons />
       </Card>
     </section>
   );
