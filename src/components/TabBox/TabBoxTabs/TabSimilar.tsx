@@ -1,13 +1,8 @@
-'use client';
-import React, { useContext, useRef } from 'react';
+"use client";
+import React, { useContext, useRef } from "react";
 // import useInfiniteScroll from '../../../hooks/useInfiniteScroll';
-import {
-  handleInfiniteScroll,
-  renderMovieTiles,
-} from '../../../utilities/UtilitiesFunctions';
-import { TabBoxContext } from '../TabBox';
-import { PulseLoader } from 'react-spinners';
-import { FixMeLater } from '../../../types/types';
+import { TabBoxContext } from "..";
+import { FixMeLater } from "../../../types/types";
 
 const TabSimilar = ({ mediaType, id, name }: FixMeLater) => {
   const { activeTab } = useContext<FixMeLater>(TabBoxContext);
@@ -27,7 +22,7 @@ const TabSimilar = ({ mediaType, id, name }: FixMeLater) => {
   }
 
   return (
-    <div className='w-full h-full'>
+    <div className="h-full w-full">
       {/* {isSuccess && (
         <div
           ref={scrollContainerRef}

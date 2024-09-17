@@ -2,7 +2,7 @@ import axios from "axios";
 import { PulseLoader } from "react-spinners";
 
 import Footer from "../components/Footer";
-import TabBox from "../components/TabBox/TabBox";
+import TabBox from "../components/TabBox";
 import StarIcon from "../components/UI/Icons/StarIcon";
 
 import { fetchBetterImages, formatTime } from "../utilities/UtilitiesFunctions";

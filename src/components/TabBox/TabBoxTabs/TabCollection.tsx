@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useContext } from 'react';
-import { renderMovieTiles } from '../../../utilities/UtilitiesFunctions';
-import { TabBoxContext } from '../TabBox';
-import { FixMeLater } from '../../../types/types';
+import { useContext } from "react";
+import { TabBoxContext } from "..";
+import { FixMeLater } from "../../../types/types";
+import { renderMovieTiles } from "../../../utilities/UtilitiesFunctions";
 
 const TabCollection = ({ data, name }: FixMeLater) => {
   const { activeTab } = useContext<FixMeLater>(TabBoxContext);
@@ -12,8 +12,8 @@ const TabCollection = ({ data, name }: FixMeLater) => {
   }
 
   return (
-    <div className='w-full h-full'>
-      <div className='grid grid-cols-2 sm:grid-cols-3 gap-4 px-2 sm:p-4 w-full h-full overflow-y-auto sm:-translate-x-4 -translate-x-2'>
+    <div className="h-full w-full">
+      <div className="grid h-full w-full -translate-x-2 grid-cols-2 gap-4 overflow-y-auto px-2 sm:-translate-x-4 sm:grid-cols-3 sm:p-4">
         {renderMovieTiles(data)}
       </div>
     </div>

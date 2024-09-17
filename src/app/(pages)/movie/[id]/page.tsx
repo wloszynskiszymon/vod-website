@@ -2,8 +2,11 @@ import TMDBImage from "@/assets/TMDBImage";
 import Card from "@/components/details/Card";
 import DetailsHeader from "@/components/details/DetailsHeader";
 import TabDetails from "@/components/details/TabDetails";
+import TabContent from "@/components/TabBox/TabContent";
+import TabRoot from "@/components/TabBox/TabRoot";
+import TabsButton from "@/components/TabBox/TabsButton";
+import TabsList from "@/components/TabBox/TabsList";
 import { tmdb } from "@/services/tmdb/tmdb";
-import TabboxesButtons from "../../../../components/details/TabboxesButtons";
 
 type PageParams = {
   params: {
@@ -39,20 +42,34 @@ const MovieDetails = async ({ params }: PageParams) => {
           alt="Poster"
           priority
         />
-        <div className="flex flex-col gap-4">
+        <div className="flex w-full flex-col gap-4">
           <DetailsHeader
-            className="mt-2"
+            className="mt-2 w-full"
             title={title}
             rating={vote_average}
             description={tagline}
             runtime={runtime + " min"}
             releaseYear={year}
           />
-          <TabboxesButtons />
-          <TabDetails
-            name="details"
-            data={{ overview, spoken_languages, genres, production_companies }}
-          />
+
+          <TabRoot initialValue="details">
+            <TabsList>
+              <TabsButton value="details">Details</TabsButton>
+              <TabsButton value="similar">Similar</TabsButton>
+              <TabsButton value="collection">Collection</TabsButton>
+            </TabsList>
+            <TabContent className="mt-4" value="details">
+              <TabDetails
+                name="details"
+                data={{
+                  overview,
+                  spoken_languages,
+                  genres,
+                  production_companies,
+                }}
+              />
+            </TabContent>
+          </TabRoot>
         </div>
       </Card>
     </section>

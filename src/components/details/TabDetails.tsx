@@ -2,16 +2,8 @@
 
 import { FixMeLater } from "../../types/types";
 import { formatObjectData } from "../../utilities/UtilitiesFunctions";
-import useTabbox from "./useTabbox";
 
 const TabDetails = ({ data, name }: FixMeLater) => {
-  const { activeTab } = useTabbox();
-
-  console.log(activeTab);
-  console.log(name);
-
-  if (activeTab !== name) return <></>;
-
   const {
     overview,
     genres,
