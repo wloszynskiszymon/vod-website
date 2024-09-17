@@ -15,7 +15,7 @@ const TabboxButton = ({ tab, children }: TabboxButtonProps) => {
   const handleClick = () => {
     const url = new URLSearchParams(searchParams?.toString());
     url.set("tab", tab);
-    router.replace(`${location.pathname}?${url.toString()}`);
+    router.replace(`${location.pathname}?${url.toString()}`, { scroll: false });
   };
 
   return (

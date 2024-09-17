@@ -10,8 +10,8 @@ import { fetchBetterImages, formatTime } from "../utilities/UtilitiesFunctions";
 import { useQuery } from "@tanstack/react-query";
 
 import { useEffect } from "react";
+import TabDetails from "../components/details/TabDetails";
 import TabCollection from "../components/TabBox/TabBoxTabs/TabCollection";
-import TabDetails from "../components/TabBox/TabBoxTabs/TabDetails";
 import TabSimilar from "../components/TabBox/TabBoxTabs/TabSimilar";
 import { FixMeLater } from "../types/types";
 

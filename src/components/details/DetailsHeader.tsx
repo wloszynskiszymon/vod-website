@@ -19,8 +19,8 @@ const DetailsHeader = ({
   ...props
 }: DetailsHeaderProps) => {
   return (
-    <section {...props} className={cn(`${className} w-full px-1 md:px-4`)}>
-      <div className="flex w-full items-center justify-between text-lg font-bold uppercase md:text-2xl lg:text-3xl">
+    <section {...props} className={cn(`${className}`)}>
+      <div className="flex items-center justify-between text-lg font-bold uppercase md:text-2xl lg:text-3xl">
         <h1 className="text-fuchsia-200">{title}</h1>
         <Rating rating={rating} />
       </div>
