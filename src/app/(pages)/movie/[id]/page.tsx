@@ -2,6 +2,7 @@ import TMDBImage from "@/assets/TMDBImage";
 import Card from "@/components/details/Card";
 import DetailsHeader from "@/components/details/DetailsHeader";
 import TabDetails from "@/components/details/TabDetails";
+import TabCollection from "@/components/TabBox/TabBoxTabs/TabCollection";
 import TabContent from "@/components/TabBox/TabContent";
 import TabRoot from "@/components/TabBox/TabRoot";
 import TabsButton from "@/components/TabBox/TabsButton";
@@ -27,6 +28,7 @@ const MovieDetails = async ({ params }: PageParams) => {
     spoken_languages,
     production_companies,
     overview,
+    belongs_to_collection,
   } = await tmdb.movies.details(id);
 
   const year = new Date(release_date).getFullYear();
@@ -68,6 +70,9 @@ const MovieDetails = async ({ params }: PageParams) => {
                   production_companies,
                 }}
               />
+            </TabContent>
+            <TabContent className="mt-4" value="collection">
+              <TabCollection collectionId={belongs_to_collection?.id} />
             </TabContent>
           </TabRoot>
         </div>

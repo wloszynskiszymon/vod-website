@@ -1,20 +1,23 @@
 "use client";
 
-import { useContext } from "react";
-import { TabBoxContext } from "..";
-import { FixMeLater } from "../../../types/types";
-import { renderMovieTiles } from "../../../utilities/UtilitiesFunctions";
+import { tmdb } from "@/services/tmdb/tmdb";
+import { useEffect } from "react";
 
-const TabCollection = ({ data, name }: FixMeLater) => {
-  const { activeTab } = useContext<FixMeLater>(TabBoxContext);
-  if (activeTab !== name) {
-    return null;
-  }
-
+const TabCollection = ({
+  collectionId,
+}: {
+  collectionId: number | undefined;
+}) => {
+  useEffect(() => {
+    if (!collectionId) return;
+    tmdb.collections.details(collectionId).then((data) => {
+      console.log(data);
+    });
+  });
   return (
     <div className="h-full w-full">
       <div className="grid h-full w-full -translate-x-2 grid-cols-2 gap-4 overflow-y-auto px-2 sm:-translate-x-4 sm:grid-cols-3 sm:p-4">
-        {renderMovieTiles(data)}
+        <></>
       </div>
     </div>
   );

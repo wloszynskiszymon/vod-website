@@ -9,6 +9,8 @@ type TabsButtonProps = React.PropsWithChildren & {
 const TabsButton = ({ value, children }: TabsButtonProps) => {
   const { activeTab, handleActiveTabChange } = useTabContext();
 
+  if (!activeTab) return <></>;
+
   return (
     <button
       className={`font-bold uppercase ${activeTab === value ? "text-fuchsia-700" : "text-gray-300"} transition duration-300`}

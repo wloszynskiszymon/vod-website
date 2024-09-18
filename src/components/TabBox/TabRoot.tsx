@@ -1,8 +1,8 @@
 "use client";
 import { cn } from "@/utilities/utils";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { TabContext } from "./context/TabContext";
+import useTabs from "./hooks/useTabs";
 
 type TabRootProps = React.PropsWithChildren &
   React.HTMLProps<HTMLDivElement> & {
@@ -15,24 +15,7 @@ const TabRoot = ({
   className = "",
   ...props
 }: TabRootProps) => {
-  const router = useRouter();
-  const searchParams = new URLSearchParams(window.location.search);
-  const tab = searchParams?.get("tab");
-  const [activeTab, setActiveTab] = useState<string>(tab || initialValue);
-
-  useEffect(() => {
-    if (!tab) {
-      const { pathname } = new URL(window.location.href);
-      router.replace(`${pathname}?tab=${initialValue}`, { scroll: false });
-    }
-  }, [initialValue, tab]);
-
-  const handleActiveTabChange = (tab: string) => {
-    if (tab === activeTab) return;
-    const { pathname } = new URL(window.location.href);
-    router.replace(`${pathname}?tab=${tab}`, { scroll: false });
-    setActiveTab(tab);
-  };
+  const [activeTab, handleActiveTabChange] = useTabs(initialValue);
 
   return (
     <div {...props} className={cn(`${className} `)}>
