@@ -1,24 +1,27 @@
-"use client";
-
+import MediaSliderItem from "@/features/SliderItem/MediaSliderItem";
 import { tmdb } from "@/services/tmdb/tmdb";
-import { useEffect } from "react";
+import { formatMoviesForSlider } from "@/services/tmdb/utils/format";
 
-const TabCollection = ({
-  collectionId,
-}: {
+type TabCollectionProps = React.HTMLProps<HTMLDivElement> & {
   collectionId: number | undefined;
-}) => {
-  useEffect(() => {
-    if (!collectionId) return;
-    tmdb.collections.details(collectionId).then((data) => {
-      console.log(data);
-    });
-  });
+};
+
+const TabCollection = async ({
+  collectionId,
+  className = "",
+  ...props
+}: TabCollectionProps) => {
+  const { parts } = await tmdb.collections.details(collectionId!!);
+  const movies = formatMoviesForSlider(parts, "poster");
+
   return (
-    <div className="h-full w-full">
-      <div className="grid h-full w-full -translate-x-2 grid-cols-2 gap-4 overflow-y-auto px-2 sm:-translate-x-4 sm:grid-cols-3 sm:p-4">
-        <></>
-      </div>
+    <div
+      {...props}
+      className={`${className}`}
+    >
+      {movies.map((movie) => (
+        <MediaSliderItem imageType="poster" mediaType="movie" {...movie} />
+      ))}
     </div>
   );
 };

@@ -6,7 +6,7 @@ import MediaSlider from "../../MediaSlider";
 
 const TVsSlider = async ({ fn, title }: SliderLink) => {
   const { results } = await fn();
-  const formattedTVs = formatTVsForSlider(results as TV[]);
+  const formattedTVs = formatTVsForSlider(results as TV[], "poster");
   const images = await tmdb.tvShows.images(formattedTVs[0].id, {
     language: "en-US",
   });

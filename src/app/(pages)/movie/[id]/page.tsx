@@ -33,18 +33,23 @@ const MovieDetails = async ({ params }: PageParams) => {
 
   const year = new Date(release_date).getFullYear();
 
+  const hasCollection = belongs_to_collection !== null;
+
   return (
-    <section className="flex-center relative min-h-[50rem] w-full lg:bg-gray-900">
-      <Card className="z-10 flex w-5/6 gap-4 bg-gray-950">
-        <TMDBImage
-          className="flex-shrink-0 rounded-xl border-2 border-gray-700"
-          imageType="poster"
-          size="w342"
-          src={poster_path as string}
-          alt="Poster"
-          priority
-        />
-        <div className="flex w-full flex-col gap-4">
+    <section className="flex-center relative h-screen min-h-[30rem] w-full lg:bg-gray-900">
+      <Card className="z-10 flex max-h-[550px] w-5/6 gap-4 overflow-hidden bg-gray-950">
+        <figure className="self-center">
+          <TMDBImage
+            className="rounded-xl border-2 border-gray-700"
+            imageType="poster"
+            size="w342"
+            src={poster_path as string}
+            alt="Poster"
+            priority
+          />
+        </figure>
+
+        <div className="flex flex-1 flex-col gap-4 self-start">
           <DetailsHeader
             className="mt-2 w-full"
             title={title}
@@ -58,8 +63,11 @@ const MovieDetails = async ({ params }: PageParams) => {
             <TabsList>
               <TabsButton value="details">Details</TabsButton>
               <TabsButton value="similar">Similar</TabsButton>
-              <TabsButton value="collection">Collection</TabsButton>
+              {hasCollection && (
+                <TabsButton value="collection">Collection</TabsButton>
+              )}
             </TabsList>
+
             <TabContent className="mt-4" value="details">
               <TabDetails
                 name="details"
@@ -71,9 +79,17 @@ const MovieDetails = async ({ params }: PageParams) => {
                 }}
               />
             </TabContent>
-            <TabContent className="mt-4" value="collection">
-              <TabCollection collectionId={belongs_to_collection?.id} />
-            </TabContent>
+            {hasCollection && (
+              <TabContent
+                className="h-[355px] overflow-y-auto"
+                value="collection"
+              >
+                <TabCollection
+                  className="grid grid-cols-5 gap-2 overflow-y-auto py-4"
+                  collectionId={belongs_to_collection?.id}
+                />
+              </TabContent>
+            )}
           </TabRoot>
         </div>
       </Card>
