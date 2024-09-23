@@ -37,7 +37,7 @@ const MovieDetails = async ({ params }: PageParams) => {
 
   return (
     <section className="flex-center relative h-screen min-h-[30rem] w-full lg:bg-gray-900">
-      <Card className="z-10 flex max-h-[550px] w-5/6 gap-4 overflow-hidden bg-gray-950">
+      <Card className="z-10 flex h-[540px] w-5/6 gap-4 overflow-hidden bg-gray-950">
         <figure className="self-center">
           <TMDBImage
             className="rounded-xl border-2 border-gray-700"
@@ -49,7 +49,7 @@ const MovieDetails = async ({ params }: PageParams) => {
           />
         </figure>
 
-        <div className="flex flex-1 flex-col gap-4 self-start">
+        <div className="flex h-full min-h-0 flex-1 flex-col gap-4 self-start">
           <DetailsHeader
             className="mt-2 w-full"
             title={title}
@@ -68,7 +68,10 @@ const MovieDetails = async ({ params }: PageParams) => {
               )}
             </TabsList>
 
-            <TabContent className="mt-4" value="details">
+            <TabContent
+              className="mt-4 flex-1 overflow-y-auto px-1"
+              value="details"
+            >
               <TabDetails
                 name="details"
                 data={{
@@ -81,11 +84,11 @@ const MovieDetails = async ({ params }: PageParams) => {
             </TabContent>
             {hasCollection && (
               <TabContent
-                className="h-[355px] overflow-y-auto"
+                className="min-h-0 flex-1 overflow-y-auto px-1"
                 value="collection"
               >
                 <TabCollection
-                  className="grid grid-cols-5 gap-2 overflow-y-auto py-4"
+                  className="grid grid-cols-5 gap-2 py-4"
                   collectionId={belongs_to_collection?.id}
                 />
               </TabContent>
