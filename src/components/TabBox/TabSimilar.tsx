@@ -1,0 +1,34 @@
+"use client";
+import InfiniteScrollContainer from "@/app/(pages)/search/_components/InfiniteScrollContainer";
+import MediaSliderItem from "@/features/SliderItem/MediaSliderItem";
+import useSimilarTabInfiniteQuery from "./hooks/useSimilarTabInfiniteQuery";
+
+type TabSimilarProps = React.HTMLProps<HTMLDivElement> & {
+  movieId: number;
+  parentId: string;
+};
+const TabSimilar = ({ movieId, parentId }: TabSimilarProps) => {
+  const infiniteScrollResults = useSimilarTabInfiniteQuery(movieId);
+
+  console.log(infiniteScrollResults.data);
+  const items =
+    infiniteScrollResults.data?.pages.flatMap((page) => page.results) || [];
+
+  return (
+    <InfiniteScrollContainer
+      className="grid h-fit w-full grid-cols-5 gap-4 p-1"
+      parentId={parentId}
+      {...infiniteScrollResults}
+    >
+      {items.map((item) => (
+        <MediaSliderItem
+          imageType="poster"
+          key={item.title + item.id}
+          {...item}
+        />
+      ))}
+    </InfiniteScrollContainer>
+  );
+};
+
+export default TabSimilar;

@@ -5,6 +5,7 @@ import TabCollection from "./TabBoxTabs/TabCollection";
 import TabContent from "./TabContent";
 import TabRoot from "./TabRoot";
 import TabsButton from "./TabsButton";
+import TabSimilar from "./TabSimilar";
 import TabsList from "./TabsList";
 
 const MovieTabs = ({
@@ -18,10 +19,9 @@ const MovieTabs = ({
   spoken_languages,
   genres,
   production_companies,
+  id,
 }: MovieDetails) => {
   const year = new Date(release_date).getFullYear();
-
-  const hasCollection = belongs_to_collection !== null;
 
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col gap-4 self-start">
@@ -38,7 +38,7 @@ const MovieTabs = ({
         <TabsList>
           <TabsButton value="details">Details</TabsButton>
           <TabsButton value="similar">Similar</TabsButton>
-          {hasCollection && (
+          {belongs_to_collection !== null && (
             <TabsButton value="collection">Collection</TabsButton>
           )}
         </TabsList>
@@ -57,7 +57,8 @@ const MovieTabs = ({
             }}
           />
         </TabContent>
-        {hasCollection && (
+
+        {belongs_to_collection !== null && (
           <TabContent
             className="min-h-0 flex-1 overflow-y-auto px-1"
             value="collection"
@@ -68,6 +69,13 @@ const MovieTabs = ({
             />
           </TabContent>
         )}
+        <TabContent
+          className="min-h-0 flex-1 overflow-y-auto px-1"
+          value="similar"
+          id="movie-similar"
+        >
+          <TabSimilar parentId="movie-similar" movieId={id} />
+        </TabContent>
       </TabRoot>
     </div>
   );
