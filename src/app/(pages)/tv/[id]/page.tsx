@@ -1,6 +1,6 @@
 import TMDBImage from "@/assets/TMDBImage";
 import Card from "@/components/details/Card";
-import MovieTabs from "@/components/TabBox/MovieTabs";
+import TvShowTabs from "@/components/TabBox/TvShowTabs";
 import { tmdb } from "@/services/tmdb/tmdb";
 
 type PageParams = {
@@ -9,9 +9,9 @@ type PageParams = {
   };
 };
 
-const MovieDetailsPage = async ({ params }: PageParams) => {
+const TvShowDetailsPage = async ({ params }: PageParams) => {
   const { id } = params;
-  const movieDetails = await tmdb.movies.details(id);
+  const tvDetails = await tmdb.tvShows.details(id);
 
   return (
     <section className="flex-center relative h-screen min-h-[30rem] w-full lg:bg-gray-900">
@@ -21,15 +21,15 @@ const MovieDetailsPage = async ({ params }: PageParams) => {
             className="rounded-xl border-2 border-gray-700"
             imageType="poster"
             size="w342"
-            src={movieDetails.poster_path as string}
+            src={tvDetails.poster_path as string}
             alt="Poster"
             priority
           />
         </figure>
-        <MovieTabs {...movieDetails} />
+        <TvShowTabs {...tvDetails} />
       </Card>
     </section>
   );
 };
 
-export default MovieDetailsPage;
+export default TvShowDetailsPage;

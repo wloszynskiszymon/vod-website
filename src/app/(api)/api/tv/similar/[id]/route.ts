@@ -12,7 +12,7 @@ export async function GET(
   const page = searchParams.get("page") || 1;
 
   // Call the TMDB API with the id and page parameter
-  const results = await tmdb.movies.similar(id, {
+  const results = await tmdb.tvShows.similar(id, {
     page: +page,
   });
 
@@ -22,10 +22,10 @@ export async function GET(
       if (!item.poster_path) return null;
       return {
         id: item.id,
-        title: item.title,
-        releaseDate: item.release_date,
+        title: item.name,
+        releaseDate: item.first_air_date,
         image: item.poster_path,
-        mediaType: "movie",
+        mediaType: "tv",
       };
     })
     .filter((item) => item !== null);

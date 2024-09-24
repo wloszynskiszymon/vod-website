@@ -4,13 +4,13 @@ import MediaSliderItem from "@/features/SliderItem/MediaSliderItem";
 import useSimilarTabInfiniteQuery from "./hooks/useSimilarTabInfiniteQuery";
 
 type TabSimilarProps = React.HTMLProps<HTMLDivElement> & {
-  movieId: number;
+  showId: number;
   parentId: string;
+  mediaType: "movie" | "tv";
 };
-const TabSimilar = ({ movieId, parentId }: TabSimilarProps) => {
-  const infiniteScrollResults = useSimilarTabInfiniteQuery(movieId);
+const TabSimilar = ({ mediaType, showId, parentId }: TabSimilarProps) => {
+  const infiniteScrollResults = useSimilarTabInfiniteQuery(mediaType, showId);
 
-  console.log(infiniteScrollResults.data);
   const items =
     infiniteScrollResults.data?.pages.flatMap((page) => page.results) || [];
 
