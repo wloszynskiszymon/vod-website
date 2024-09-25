@@ -16,9 +16,9 @@ const TvShowDetailsPage = async ({ params }: PageParams) => {
   return (
     <section className="flex-center relative h-screen min-h-[30rem] w-full lg:bg-gray-900">
       <Card className="z-10 flex h-[540px] w-5/6 gap-4 overflow-hidden bg-gray-950">
-        <figure className="self-center">
+        <figure className="h-full self-center">
           <TMDBImage
-            className="rounded-xl border-2 border-gray-700"
+            className="h-full rounded-xl border-2 border-gray-700"
             imageType="poster"
             size="w342"
             src={tvDetails.poster_path as string}

@@ -24,6 +24,7 @@ const SearchResults = () => {
       >
         {items.map((item) => (
           <MediaSliderItem
+            className="h-full"
             imageType="poster"
             key={item.title + item.id}
             {...item}

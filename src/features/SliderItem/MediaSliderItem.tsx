@@ -1,10 +1,7 @@
-"use client";
-import React from "react";
-
 import TMDBImage from "@/assets/TMDBImage";
 import { SliderShow } from "@/types/types";
 import { checkIsNew } from "@/utilities/UtilitiesFunctions";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   MediaSliderItemBadge,
   MediaSliderItemRoot,
@@ -14,9 +11,11 @@ import {
 type SliderShowProps = SliderShow & {
   mediaType: "movie" | "tv";
   imageType?: "poster" | "backdrop";
+  className?: string;
 };
 
 const MediaSliderItem = ({
+  className = "",
   id,
   title,
   releaseDate,
@@ -25,22 +24,23 @@ const MediaSliderItem = ({
   imageType = "backdrop",
 }: SliderShowProps) => {
   const isNew = checkIsNew(releaseDate);
-  const router = useRouter();
   return (
-    <MediaSliderItemRoot onClick={() => router.push(`/${mediaType}/${id}`)}>
-      <MediaSliderItemTitle>{title}</MediaSliderItemTitle>
-      {isNew && (
-        <MediaSliderItemBadge imageType={imageType}>NEW</MediaSliderItemBadge>
-      )}
-      <TMDBImage
-        imageType={imageType}
-        size="w300"
-        src={image}
-        className="h-full w-full object-cover group-hover:blur-sm"
-        alt={`${title}`}
-      />
-    </MediaSliderItemRoot>
+    <Link href={`/${mediaType}/${id}`}>
+      <MediaSliderItemRoot className={className}>
+        <MediaSliderItemTitle>{title}</MediaSliderItemTitle>
+        {isNew && (
+          <MediaSliderItemBadge imageType={imageType}>NEW</MediaSliderItemBadge>
+        )}
+        <TMDBImage
+          imageType={imageType}
+          size="w300"
+          src={image}
+          className="h-full w-full object-cover group-hover:blur-sm"
+          alt={`${title}`}
+        />
+      </MediaSliderItemRoot>
+    </Link>
   );
 };
 
-export default React.memo(MediaSliderItem);
+export default MediaSliderItem;

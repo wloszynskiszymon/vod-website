@@ -1,4 +1,4 @@
-import Star from "@/public/svgs/star.svg";
+import Star from "@/public/icons/star.svg";
 import Image from "next/image";
 
 const Rating = ({ rating }: { rating: number }) => {

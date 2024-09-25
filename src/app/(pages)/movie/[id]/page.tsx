@@ -16,9 +16,11 @@ const MovieDetailsPage = async ({ params }: PageParams) => {
   return (
     <section className="flex-center relative h-screen min-h-[30rem] w-full lg:bg-gray-900">
       <Card className="z-10 flex h-[540px] w-5/6 gap-4 overflow-hidden bg-gray-950">
-        <figure className="self-center">
+        <figure
+          style={{ backgroundColor: "#eee" }}
+          className="flex-center h-full self-center rounded-xl border-2 border-gray-700"
+        >
           <TMDBImage
-            className="rounded-xl border-2 border-gray-700"
             imageType="poster"
             size="w342"
             src={movieDetails.poster_path as string}
