@@ -8,7 +8,7 @@ const ButtonGroup = ({
   ...rest
 }: ButtonGroupProps) => {
   return (
-    <div className="pointer-events-none absolute bottom-0 left-0 h-full w-full translate-y-4">
+    <div className="pointer-events-none absolute bottom-1/3 left-0 h-full w-full">
       <Arrow.Left onClick={previous} />
       <Arrow.Right onClick={next} />
     </div>
