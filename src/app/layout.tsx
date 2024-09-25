@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Nav from "../components/nav/Nav";
-import ReactQueryProvider from "../providers/ReactQueryProvider";
+import ReactQueryProvider from "../services/providers/ReactQueryProvider";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {

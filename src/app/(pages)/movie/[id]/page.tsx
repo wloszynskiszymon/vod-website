@@ -1,6 +1,6 @@
 import TMDBImage from "@/assets/TMDBImage";
 import Card from "@/components/details/Card";
-import MovieTabs from "@/components/TabBox/MovieTabs";
+import MovieTabs from "@/components/tabs/MovieTabs";
 import { tmdb } from "@/services/tmdb/tmdb";
 
 type PageParams = {

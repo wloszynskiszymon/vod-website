@@ -1,9 +1,11 @@
-import Footer from "../components/Footer";
-
 import MoviesSliderList from "@/features/Slider/variants/movie/MoviesSliderList";
 import TVsSliderList from "@/features/Slider/variants/tv/TVsSliderList";
-import Main from "../components/Main";
-import { sliderMoviesLinks, sliderTVsLink } from "./(api)/api/image/utils/urls";
+import {
+  sliderMoviesLinks,
+  sliderTVsLink,
+} from "../(api)/api/multi/image/utils/urls";
+import Footer from "../../components/Footer";
+import Main from "../../components/Main";
 import { Header } from "./_components/Header";
 
 const Page = async () => {

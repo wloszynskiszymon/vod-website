@@ -1,11 +1,11 @@
+import DetailsHeader from "@/components/details/DetailsHeader";
 import { TvShowDetails } from "tmdb-ts";
-import DetailsHeader from "../details/DetailsHeader";
-import TabDetails from "../details/TabDetails";
-import TabContent from "./TabContent";
-import TabRoot from "./TabRoot";
-import TabsButton from "./TabsButton";
+import TabContent from "../../features/TabBox/components/TabContent";
+import TabRoot from "../../features/TabBox/components/TabRoot";
+import TabsButton from "../../features/TabBox/components/TabsButton";
+import TabsList from "../../features/TabBox/components/TabsList";
+import TabDetails from "./TabDetails";
 import TabSimilar from "./TabSimilar";
-import TabsList from "./TabsList";
 
 const TvShowTabs = ({
   first_air_date,

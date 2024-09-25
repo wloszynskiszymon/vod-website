@@ -1,4 +1,4 @@
-import { cn } from "../../../utilities/utils";
+import { cn } from "../../../../utilities/utils";
 
 const Input: React.FC<React.HTMLProps<HTMLInputElement>> = ({
   className,

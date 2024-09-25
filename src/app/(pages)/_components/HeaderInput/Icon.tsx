@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "../../../utilities/utils";
+import { cn } from "../../../../utilities/utils";
 
 const Icon: React.FC<
   React.HTMLProps<HTMLDivElement> & React.PropsWithChildren

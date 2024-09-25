@@ -2,23 +2,21 @@ import MediaSliderItem from "@/features/SliderItem/MediaSliderItem";
 import { tmdb } from "@/services/tmdb/tmdb";
 import { formatMoviesForSlider } from "@/services/tmdb/utils/format";
 
-type TabCollectionProps = React.HTMLProps<HTMLDivElement> & {
+type TabCollecitonProps = React.HTMLProps<HTMLDivElement> & {
   collectionId: number | undefined;
 };
 
-const TabCollection = async ({
+// Only movies have collections
+const TabColleciton = async ({
   collectionId,
   className = "",
   ...props
-}: TabCollectionProps) => {
+}: TabCollecitonProps) => {
   const { parts } = await tmdb.collections.details(collectionId!!);
   const movies = formatMoviesForSlider(parts, "poster");
 
   return (
-    <div
-      {...props}
-      className={`${className}`}
-    >
+    <div {...props} className={`${className}`}>
       {movies.map((movie) => (
         <MediaSliderItem imageType="poster" mediaType="movie" {...movie} />
       ))}
@@ -26,4 +24,4 @@ const TabCollection = async ({
   );
 };
 
-export default TabCollection;
+export default TabColleciton;

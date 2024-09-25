@@ -1,6 +1,6 @@
 "use client";
 
-import useTabContext from "./hooks/useTabContext";
+import useTabContext from "../hooks/useTabContext";
 
 type TabsButtonProps = React.PropsWithChildren & {
   value: string; // Id name to identify tab and display it in the URL

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { TabContext } from "./context/TabContext";
-import useTabs from "./hooks/useTabs";
+import { TabContext } from "../context/TabContext";
+import useTabs from "../hooks/useTabs";
 
 type TabRootProps = React.PropsWithChildren & {
   initialValue: string;

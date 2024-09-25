@@ -1,12 +1,12 @@
 import { MovieDetails } from "tmdb-ts";
+import TabContent from "../../features/TabBox/components/TabContent";
+import TabRoot from "../../features/TabBox/components/TabRoot";
+import TabsButton from "../../features/TabBox/components/TabsButton";
+import TabsList from "../../features/TabBox/components/TabsList";
 import DetailsHeader from "../details/DetailsHeader";
-import TabDetails from "../details/TabDetails";
-import TabCollection from "./TabBoxTabs/TabCollection";
-import TabContent from "./TabContent";
-import TabRoot from "./TabRoot";
-import TabsButton from "./TabsButton";
+import TabCollection from "./TabCollection";
+import TabDetails from "./TabDetails";
 import TabSimilar from "./TabSimilar";
-import TabsList from "./TabsList";
 
 const MovieTabs = ({
   release_date,

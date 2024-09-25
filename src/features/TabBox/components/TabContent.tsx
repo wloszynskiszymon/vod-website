@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import { cn } from "@/utilities/utils";
 import React from "react";
-import useTabContext from "./hooks/useTabContext";
+import useTabContext from "../hooks/useTabContext";
 
 type TabContentProps = React.PropsWithChildren &
   React.HTMLProps<HTMLDivElement> & {
@@ -17,7 +17,7 @@ const TabContent = ({
   if (activeTab !== value) return <></>;
 
   return (
-    <div {...props} className={cn(`${className} `)}>
+    <div {...props} className={cn(`${className}`)}>
       {children}
     </div>
   );

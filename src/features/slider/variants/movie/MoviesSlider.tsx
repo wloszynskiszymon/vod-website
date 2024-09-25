@@ -7,11 +7,6 @@ import MediaSlider from "../../MediaSlider";
 const NowPlayingMoviesSlider = async ({ fn, title }: SliderLink) => {
   const { results } = await fn();
   const formattedMovies = formatMoviesForSlider(results as Movie[], "poster");
-  const images = await tmdb.movies.images(formattedMovies[0].id, {
-    language: "en-US",
-  });
-
-  console.log(images);
 
   return (
     <MediaSlider shows={formattedMovies} mediaType="movie" title={title} />

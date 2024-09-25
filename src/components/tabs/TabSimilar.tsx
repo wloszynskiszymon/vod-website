@@ -1,7 +1,7 @@
 "use client";
 import InfiniteScrollContainer from "@/app/(pages)/search/_components/InfiniteScrollContainer";
-import useSimilarTabInfiniteQuery from "./hooks/useSimilarTabInfiniteQuery";
 import MediaSliderItem from "@/features/SliderItem/MediaSliderItem";
+import useSimilarTabInfiniteQuery from "../../features/TabBox/hooks/useSimilarTabInfiniteQuery";
 
 type TabSimilarProps = React.HTMLProps<HTMLDivElement> & {
   showId: number;

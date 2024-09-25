@@ -1,4 +1,4 @@
-import { cn } from "../../../utilities/utils";
+import { cn } from "../../../../utilities/utils";
 
 // Root container for the HeaderInput component
 const Root: React.FC<React.PropsWithChildren<{ className?: string }>> = ({
