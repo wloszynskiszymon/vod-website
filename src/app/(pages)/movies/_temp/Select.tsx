@@ -1,16 +1,24 @@
 "use client";
 import { FixMeLater } from "@/types/types";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { PulseLoader } from "react-spinners";
+import { Genre } from "tmdb-ts";
+import { Genres } from "tmdb-ts/dist/endpoints";
 
-const Select = () => {
-  const [dropdownActive, setDropdownActive] = useState(false);
-  const [currentGenre, setCurrentGenre] = useState<FixMeLater>(null);
+const Select = ({ genres }: Genres) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const currGenre = useSearchParams()?.get("genre");
 
-  // When changing route reset the currentGenre to initial state
+  const [dropdownActive, setDropdownActive] = useState<boolean>(false);
+  const [currentGenre, setCurrentGenre] = useState<Genre>(
+    genres.find((genre) => genre.id === Number(currGenre)) || genres[0],
+  );
+
   useEffect(() => {
-    setCurrentGenre(null);
-  }, [location.pathname]);
+    if (!currGenre)
+      router.push(`${pathname}?genre=${genres[0].id}`, { scroll: false });
+  }, [currGenre]);
 
   // Open dropdown
   const onClickDropdownHandler = () =>
@@ -23,6 +31,7 @@ const Select = () => {
       name: e.target.textContent,
     });
     setDropdownActive(false);
+    router.replace(`${pathname}?genre=${e.target.id}`, { scroll: false });
   };
 
   return (
@@ -31,31 +40,23 @@ const Select = () => {
         onClick={onClickDropdownHandler}
         className="md:text-md cursor-pointer rounded-lg border-2 border-gray-300 bg-gray-900 px-2 py-1 text-xs text-gray-300 lg:text-lg"
       >
-        {currentGenre?.name ? (
-          currentGenre.name
-        ) : (
-          <PulseLoader color={"Silver"} size={8} />
-        )}
-        {currentGenre && <span className="ml-2"> &#8744;</span>}
+        {currentGenre.name}
+        <span className="ml-2"> &#8744;</span>
       </div>
       {dropdownActive && (
-        <div className="absolute right-0 z-20 block w-[15rem] rounded-xl bg-gray-900 px-4 py-2 lg:w-[20rem]">
-          {/* <ul className="md:text-md flex flex-wrap gap-2 text-sm text-gray-300 lg:text-lg">
-            {genreListIsSuccess &&
-              genreListData.genres.map((singleData: FixMeLater) => {
-                const { id, name } = singleData;
-                return (
-                  <li
-                    className="cursor-pointer border-b-2 border-transparent transition-all duration-100 hover:border-white"
-                    id={id}
-                    key={id}
-                    onClick={onClickGenre}
-                  >
-                    {name}
-                  </li>
-                );
-              })}
-          </ul> */}
+        <div className="absolute right-0 z-20 block w-[15rem] rounded-xl bg-gray-900 p-4 lg:w-[20rem]">
+          <ul className="md:text-md grid h-full w-full grid-cols-3 items-center justify-center gap-2 text-sm text-gray-300">
+            {genres.map(({ id, name }: FixMeLater) => (
+              <li
+                className="cursor-pointer transition-all duration-100 hover:underline"
+                id={id}
+                key={id}
+                onClick={onClickGenre}
+              >
+                {name}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>

@@ -1,6 +1,7 @@
 import { tmdb } from "@/services/tmdb/tmdb";
 import { FixMeLater } from "@/types/types";
 import Heading from "./_temp/Heading";
+import Select from "./_temp/Select";
 
 const GenresPage = async ({ mediaType }: FixMeLater) => {
   const genres = await tmdb.genres.movies({ language: "en-US" });
@@ -11,7 +12,7 @@ const GenresPage = async ({ mediaType }: FixMeLater) => {
         <Heading>
           Find desired <span className="text-purple-400">movies</span>
         </Heading>
-        {/* Select */}
+        <Select genres={genres.genres} />
       </div>
       <div className="lg-grid-cols-4 mt-36 grid min-h-[10rem] w-full grid-cols-2 gap-4 p-2 md:mt-52 md:grid-cols-3 md:p-4 xl:grid-cols-6">
         {/* {genreIsSuccess && renderMovieTiles(genreData)} */}
