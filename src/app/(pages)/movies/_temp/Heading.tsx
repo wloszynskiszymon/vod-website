@@ -8,7 +8,7 @@ const Heading = ({ children, className = "", ...props }: HeadingProps) => {
     <h1
       {...props}
       className={cn(
-        `${className} text-md font-extrabold uppercase tracking-wider text-gray-300 md:text-xl lg:text-3xl`,
+        `${className} text-md font-extrabold uppercase tracking-wider text-gray-300 md:text-2xl lg:text-3xl`,
       )}
     >
       {children}

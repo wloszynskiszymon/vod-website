@@ -31,7 +31,11 @@ const GenreResults = ({ className = "", ...props }: GenreResultsProps) => {
 
   return (
     <div {...props} id="genres-result-container" className={cn(`${className}`)}>
-      <InfiniteScrollContainer {...results} parentId="genres-result-container">
+      <InfiniteScrollContainer
+        className="grid w-full grid-cols-2 gap-4 p-2 md:grid-cols-3 md:p-4 lg:grid-cols-4 xl:grid-cols-6"
+        {...results}
+        parentId="genres-result-container"
+      >
         {flattenedData.map((item) => (
           <MediaSliderItem
             className="h-full"
