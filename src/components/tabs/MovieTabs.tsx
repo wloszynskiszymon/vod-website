@@ -20,11 +20,12 @@ const MovieTabs = ({
   genres,
   production_companies,
   id,
-}: MovieDetails) => {
+  className = "",
+}: MovieDetails & { className?: string }) => {
   const year = new Date(release_date).getFullYear();
 
   return (
-    <div className="flex h-full min-h-0 flex-1 flex-col gap-4 self-start">
+    <div className={className}>
       <DetailsHeader
         className="mt-2 w-full"
         title={title}
@@ -48,7 +49,6 @@ const MovieTabs = ({
           value="details"
         >
           <TabDetails
-            name="details"
             data={{
               overview,
               spoken_languages,

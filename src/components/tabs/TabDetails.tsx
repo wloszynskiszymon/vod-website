@@ -1,8 +1,17 @@
 "use client";
 import { formatObjectData } from "@/utilities/utils";
-import { MovieDetails, TvShowDetails } from "tmdb-ts";
+import { Genre, ProductionCompany, SpokenLanguage } from "tmdb-ts";
 
-const TabDetails = ({ data }: { data: MovieDetails | TvShowDetails }) => {
+type TabDetailsProps = {
+  data: {
+    overview: string;
+    spoken_languages: SpokenLanguage[];
+    genres: Genre[];
+    production_companies: ProductionCompany[];
+  };
+};
+
+const TabDetails = ({ data }: TabDetailsProps) => {
   const {
     overview,
     genres,

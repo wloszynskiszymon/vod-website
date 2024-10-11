@@ -1,7 +1,8 @@
-import TMDBImage from "@/assets/TMDBImage";
 import TvShowTabs from "@/components/tabs/TvShowTabs";
-import Card from "@/components/utils/Card";
 import { tmdb } from "@/services/tmdb/tmdb";
+import DetailsBackground from "../../_components/DetailsBackground";
+import DetailsCard from "../../_components/DetailsCard";
+import DetailsPoster from "../../_components/DetailsPoster";
 
 type PageParams = {
   params: {
@@ -14,21 +15,15 @@ const TvShowDetailsPage = async ({ params }: PageParams) => {
   const tvDetails = await tmdb.tvShows.details(id);
 
   return (
-    <section className="flex-center relative h-screen min-h-[30rem] w-full lg:bg-gray-900">
-      <Card className="z-10 flex h-[540px] w-5/6 gap-4 overflow-hidden bg-gray-950">
-        <figure className="h-full self-center">
-          <TMDBImage
-            className="h-full rounded-xl border-2 border-gray-700"
-            imageType="poster"
-            size="w342"
-            src={tvDetails.poster_path as string}
-            alt="Poster"
-            priority
-          />
-        </figure>
-        <TvShowTabs {...tvDetails} />
-      </Card>
-    </section>
+    <DetailsBackground>
+      <DetailsCard>
+        <DetailsPoster src={tvDetails.poster_path as string} />
+        <TvShowTabs
+          className="flex h-full min-h-0 w-full flex-1 flex-col gap-4 self-start md:w-auto"
+          {...tvDetails}
+        />
+      </DetailsCard>
+    </DetailsBackground>
   );
 };
 

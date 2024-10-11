@@ -18,11 +18,12 @@ const TvShowTabs = ({
   genres,
   production_companies,
   id,
-}: TvShowDetails) => {
+  className = "",
+}: TvShowDetails & { className?: string }) => {
   const year = new Date(first_air_date).getFullYear();
 
   return (
-    <div className="flex h-full min-h-0 flex-1 flex-col gap-4 self-start">
+    <div className={className}>
       <DetailsHeader
         className="mt-2 w-full"
         title={name}
@@ -43,7 +44,6 @@ const TvShowTabs = ({
           value="details"
         >
           <TabDetails
-            name="details"
             data={{
               overview,
               spoken_languages,
