@@ -1,4 +1,4 @@
-import MediaSliderItem from "@/features/SliderItem/MediaSliderItem";
+import Poster from "@/features/Poster/Poster";
 import { tmdb } from "@/services/tmdb/tmdb";
 import { formatMoviesForSlider } from "@/services/tmdb/utils/format";
 
@@ -18,7 +18,7 @@ const TabColleciton = async ({
   return (
     <div {...props} className={`${className}`}>
       {movies.map((movie) => (
-        <MediaSliderItem imageType="poster" mediaType="movie" {...movie} />
+        <Poster imageType="poster" mediaType="movie" {...movie} />
       ))}
     </div>
   );

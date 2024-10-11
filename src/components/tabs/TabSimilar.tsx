@@ -1,6 +1,6 @@
 "use client";
 import InfiniteScrollContainer from "@/app/(pages)/search/_components/InfiniteScrollContainer";
-import MediaSliderItem from "@/features/SliderItem/MediaSliderItem";
+import Poster from "@/features/Poster/Poster";
 import useSimilarTabInfiniteQuery from "../../features/TabBox/hooks/useSimilarTabInfiniteQuery";
 
 type TabSimilarProps = React.HTMLProps<HTMLDivElement> & {
@@ -21,11 +21,7 @@ const TabSimilar = ({ mediaType, showId, parentId }: TabSimilarProps) => {
       {...infiniteScrollResults}
     >
       {items.map((item) => (
-        <MediaSliderItem
-          imageType="poster"
-          key={item.title + item.id}
-          {...item}
-        />
+        <Poster imageType="poster" key={item.title + item.id} {...item} />
       ))}
     </InfiniteScrollContainer>
   );

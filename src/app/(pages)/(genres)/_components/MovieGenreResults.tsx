@@ -1,5 +1,5 @@
 "use client";
-import MediaSliderItem from "@/features/SliderItem/MediaSliderItem";
+import Poster from "@/features/Poster/Poster";
 import { cn } from "@/utilities/utils";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
@@ -40,7 +40,7 @@ const MovieGenreResults = ({
         parentId="genres-result-container"
       >
         {flattenedData.map((item) => (
-          <MediaSliderItem
+          <Poster
             className="h-full"
             imageType="poster"
             key={item.title + item.id}

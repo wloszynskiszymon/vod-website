@@ -1,6 +1,6 @@
 "use client";
 
-import MediaSliderItem from "@/features/SliderItem/MediaSliderItem";
+import Poster from "@/features/Poster/Poster";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useSearchParams } from "next/navigation";
 import InfiniteScrollContainer from "./InfiniteScrollContainer";
@@ -23,7 +23,7 @@ const SearchResults = () => {
         {...infiniteScrollResults}
       >
         {items.map((item) => (
-          <MediaSliderItem
+          <Poster
             className="h-full"
             imageType="poster"
             key={item.title + item.id}

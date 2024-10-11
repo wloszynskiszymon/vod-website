@@ -3,19 +3,15 @@ import { SliderShow } from "@/types/types";
 
 import { checkIsNew } from "@/utilities/utils";
 import Link from "next/link";
-import {
-  MediaSliderItemBadge,
-  MediaSliderItemRoot,
-  MediaSliderItemTitle,
-} from "./components";
+import { PosterBadge, PosterRoot, PosterTitle } from "./components";
 
-type SliderShowProps = SliderShow & {
+type PosterProps = SliderShow & {
   mediaType: "movie" | "tv";
   imageType?: "poster" | "backdrop";
   className?: string;
 };
 
-const MediaSliderItem = ({
+const Poster = ({
   className = "",
   id,
   title,
@@ -23,15 +19,13 @@ const MediaSliderItem = ({
   image,
   mediaType,
   imageType = "backdrop",
-}: SliderShowProps) => {
+}: PosterProps) => {
   const isNew = checkIsNew(releaseDate);
   return (
     <Link href={`/${mediaType}/${id}`}>
-      <MediaSliderItemRoot className={className}>
-        <MediaSliderItemTitle>{title}</MediaSliderItemTitle>
-        {isNew && (
-          <MediaSliderItemBadge imageType={imageType}>NEW</MediaSliderItemBadge>
-        )}
+      <PosterRoot className={className}>
+        <PosterTitle>{title}</PosterTitle>
+        {isNew && <PosterBadge imageType={imageType}>NEW</PosterBadge>}
         <TMDBImage
           imageType={imageType}
           size="w300"
@@ -39,9 +33,9 @@ const MediaSliderItem = ({
           className="h-full w-full object-cover group-hover:blur-sm"
           alt={`${title}`}
         />
-      </MediaSliderItemRoot>
+      </PosterRoot>
     </Link>
   );
 };
 
-export default MediaSliderItem;
+export default Poster;

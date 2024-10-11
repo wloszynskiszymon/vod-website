@@ -1,5 +1,5 @@
 import { SliderShow } from "@/types/types";
-import MediaSliderItem from "../SliderItem/MediaSliderItem";
+import Poster from "../Poster/Poster";
 import { SliderContent, SliderRoot, SliderTitle } from "./components";
 
 type MediaSliderProps = {
@@ -18,7 +18,7 @@ const MediaSlider: React.FC<MediaSliderProps> = ({
       <SliderTitle>{title}</SliderTitle>
       <SliderContent>
         {shows.map((show: SliderShow) => (
-          <MediaSliderItem
+          <Poster
             key={show.id + show.releaseDate}
             mediaType={mediaType}
             {...show}
