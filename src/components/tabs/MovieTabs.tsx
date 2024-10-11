@@ -1,9 +1,9 @@
 import { MovieDetails } from "tmdb-ts";
+import DetailsHeader from "../../app/(pages)/(details)/_components/DetailsHeader";
 import TabContent from "../../features/TabBox/components/TabContent";
 import TabRoot from "../../features/TabBox/components/TabRoot";
 import TabsButton from "../../features/TabBox/components/TabsButton";
 import TabsList from "../../features/TabBox/components/TabsList";
-import DetailsHeader from "../details/DetailsHeader";
 import TabCollection from "./TabCollection";
 import TabDetails from "./TabDetails";
 import TabSimilar from "./TabSimilar";

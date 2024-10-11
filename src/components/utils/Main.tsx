@@ -1,4 +1,4 @@
-import { cn } from "../utilities/utils";
+import { cn } from "../../utilities/utils";
 
 type MainProps = React.PropsWithChildren & React.HTMLProps<HTMLDivElement>;
 const Main = async ({ children, className = "", ...props }: MainProps) => {

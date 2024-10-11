@@ -1,8 +1,8 @@
 "use client";
+import LeftArrowIcon from "@/assets/icons/LeftArrowIcon";
+import RightArrowIcon from "@/assets/icons/RightArrowIcon";
 import { createContext, ReactNode } from "react";
 import { ArrowProps } from "react-multi-carousel";
-import LeftArrowIcon from "../../../../components/UI/Icons/LeftArrowIcon";
-import RightArrowIcon from "../../../../components/UI/Icons/RightArrowIcon";
 
 type ArrowContextType = {
   Left: ({ onClick }: ArrowProps) => JSX.Element;

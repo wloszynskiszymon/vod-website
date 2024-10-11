@@ -1,5 +1,5 @@
 "use client";
-import DeleteIcon from "@/components/UI/Icons/DeleteIcon";
+import DeleteIcon from "@/assets/icons/DeleteIcon";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRef } from "react";
 

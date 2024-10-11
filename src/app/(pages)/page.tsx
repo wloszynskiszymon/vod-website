@@ -1,7 +1,7 @@
 import MoviesSliderList from "@/features/Slider/variants/movie/MoviesSliderList";
 import TVsSliderList from "@/features/Slider/variants/tv/TVsSliderList";
-import Footer from "../../components/Footer";
-import Main from "../../components/Main";
+import Footer from "../../components/utils/Footer";
+import Main from "../../components/utils/Main";
 import {
   sliderMoviesLinks,
   sliderTVsLink,

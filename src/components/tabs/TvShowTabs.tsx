@@ -1,4 +1,4 @@
-import DetailsHeader from "@/components/details/DetailsHeader";
+import DetailsHeader from "@/app/(pages)/(details)/_components/DetailsHeader";
 import { TvShowDetails } from "tmdb-ts";
 import TabContent from "../../features/TabBox/components/TabContent";
 import TabRoot from "../../features/TabBox/components/TabRoot";

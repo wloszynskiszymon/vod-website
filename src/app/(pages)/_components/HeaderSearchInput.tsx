@@ -1,5 +1,5 @@
 "use client";
-import SearchIcon from "@/components/UI/Icons/SearchIcon";
+import SearchIcon from "@/assets/icons/SearchIcon";
 import { useRouter } from "next/navigation";
 import HeaderInput from "./HeaderInput";
 
