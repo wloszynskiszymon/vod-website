@@ -1,7 +1,7 @@
 import { tmdb } from "@/services/tmdb/tmdb";
-import Select from "./_temp/GenreDropdown";
-import GenreResults from "./_temp/GenreResults";
-import Heading from "./_temp/Heading";
+import Select from "../_components/GenreDropdown";
+import Heading from "../_components/Heading";
+import GenreResults from "../_components/MovieGenreResults";
 
 const GenresPage = async () => {
   const genres = await tmdb.genres.movies({ language: "en-US" });

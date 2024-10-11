@@ -11,7 +11,7 @@ const Nav = () => {
       <div className="flex gap-2 md:gap-6 lg:gap-8">
         <NavLink href="/">Home</NavLink>
         <NavLink href="/movies">Movies</NavLink>
-        <NavLink href="/series">Series</NavLink>
+        <NavLink href="/tvs">Series</NavLink>
       </div>
     </nav>
   );

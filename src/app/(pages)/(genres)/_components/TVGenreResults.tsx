@@ -6,15 +6,15 @@ import { useSearchParams } from "next/navigation";
 import React from "react";
 import InfiniteScrollContainer from "../../search/_components/InfiniteScrollContainer";
 
-type GenreResultsProps = React.HTMLProps<HTMLDivElement>;
+type TVGenreResultsProps = React.HTMLProps<HTMLDivElement>;
 
-const GenreResults = ({ className = "", ...props }: GenreResultsProps) => {
+const TVGenreResults = ({ className = "", ...props }: TVGenreResultsProps) => {
   const params = useSearchParams();
   const genreId = params?.get("genre");
   const results = useInfiniteQuery({
-    queryKey: [`movies-by-genre-results`, genreId],
+    queryKey: [`tv-by-genre-results`, genreId],
     queryFn: ({ pageParam = 1 }) =>
-      fetch(`/api/movie/genre/${genreId}?page=${pageParam}`).then((res) =>
+      fetch(`/api/tv/genre/${genreId}?page=${pageParam}`).then((res) =>
         res.json(),
       ),
     initialPageParam: 1,
@@ -23,7 +23,7 @@ const GenreResults = ({ className = "", ...props }: GenreResultsProps) => {
   });
 
   if (!genreId || Number(genreId) <= 0) {
-    return <div>No movies found</div>;
+    return <div>No TV series found</div>;
   }
 
   const flattenedData =
@@ -49,4 +49,4 @@ const GenreResults = ({ className = "", ...props }: GenreResultsProps) => {
   );
 };
 
-export default GenreResults;
+export default TVGenreResults;
