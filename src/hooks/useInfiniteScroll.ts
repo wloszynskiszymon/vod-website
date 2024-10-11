@@ -4,7 +4,9 @@ const useInfiniteScroll = (query: string) => {
   return useInfiniteQuery({
     queryKey: [`search-${query}`],
     queryFn: ({ pageParam = 1 }) =>
-      fetch(`/api/search/${query}?page=${pageParam}`).then((res) => res.json()),
+      fetch(`/api/multi/search/${query}?page=${pageParam}`).then((res) =>
+        res.json(),
+      ),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage ?? false,
     enabled: !!query && query.length > 0,
