@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { Genre } from "tmdb-ts";
 import { Genres } from "tmdb-ts/dist/endpoints";
 
-const Select = ({ genres }: Genres) => {
+const GenreDropdown = ({ genres }: Genres) => {
   const router = useRouter();
   const pathname = usePathname();
   const currGenre = useSearchParams()?.get("genre");
@@ -29,6 +29,7 @@ const Select = ({ genres }: Genres) => {
       name: e.target.textContent,
     });
     router.replace(`${pathname}?genre=${e.target.id}`, { scroll: false });
+    router.refresh();
   };
 
   return (
@@ -54,4 +55,4 @@ const Select = ({ genres }: Genres) => {
   );
 };
 
-export default Select;
+export default GenreDropdown;

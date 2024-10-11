@@ -1,9 +1,9 @@
 import { tmdb } from "@/services/tmdb/tmdb";
-import { FixMeLater } from "@/types/types";
+import Select from "./_temp/GenreDropdown";
+import GenreResults from "./_temp/GenreResults";
 import Heading from "./_temp/Heading";
-import Select from "./_temp/Select";
 
-const GenresPage = async ({ mediaType }: FixMeLater) => {
+const GenresPage = async () => {
   const genres = await tmdb.genres.movies({ language: "en-US" });
 
   return (
@@ -14,9 +14,8 @@ const GenresPage = async ({ mediaType }: FixMeLater) => {
         </Heading>
         <Select genres={genres.genres} />
       </div>
-      <div className="lg-grid-cols-4 mt-36 grid min-h-[10rem] w-full grid-cols-2 gap-4 p-2 md:mt-52 md:grid-cols-3 md:p-4 xl:grid-cols-6">
-        {/* {genreIsSuccess && renderMovieTiles(genreData)} */}
-      </div>
+
+      <GenreResults className="mt-36 grid h-[40rem] w-full grid-cols-2 gap-4 overflow-y-auto p-2 md:mt-52 md:grid-cols-3 md:p-4 lg:grid-cols-4 xl:grid-cols-6" />
     </section>
   );
 };
