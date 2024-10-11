@@ -1,6 +1,7 @@
 import TMDBImage from "@/assets/TMDBImage";
 import { SliderShow } from "@/types/types";
-import { checkIsNew } from "@/utilities/UtilitiesFunctions";
+
+import { checkIsNew } from "@/utilities/utils";
 import Link from "next/link";
 import {
   MediaSliderItemBadge,

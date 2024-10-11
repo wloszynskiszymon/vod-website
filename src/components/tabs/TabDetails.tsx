@@ -1,9 +1,8 @@
 "use client";
+import { formatObjectData } from "@/utilities/utils";
+import { MovieDetails, TvShowDetails } from "tmdb-ts";
 
-import { FixMeLater } from "../../types/types";
-import { formatObjectData } from "../../utilities/UtilitiesFunctions";
-
-const TabDetails = ({ data, name }: FixMeLater) => {
+const TabDetails = ({ data }: { data: MovieDetails | TvShowDetails }) => {
   const {
     overview,
     genres,

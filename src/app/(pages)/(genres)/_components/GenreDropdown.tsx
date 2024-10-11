@@ -2,7 +2,6 @@
 import DropdownContent from "@/features/Dropdown/components/DropdownContent";
 import DropdownRoot from "@/features/Dropdown/components/DropdownRoot";
 import DropdownTrigger from "@/features/Dropdown/components/DropdownTrigger";
-import { FixMeLater } from "@/types/types";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Genre } from "tmdb-ts";
@@ -23,12 +22,14 @@ const GenreDropdown = ({ genres }: Genres) => {
   }, [currGenre]);
 
   // Set new genre, close dropdown and reset data to refetch it.
-  const onClickGenre = (e: FixMeLater) => {
+  const onClickGenre = (e: React.MouseEvent<HTMLLIElement>) => {
     setCurrentGenre({
-      id: e.target.id,
-      name: e.target.textContent,
+      id: Number(e.currentTarget.id),
+      name: e.currentTarget.textContent || "",
     });
-    router.replace(`${pathname}?genre=${e.target.id}`, { scroll: false });
+    router.replace(`${pathname}?genre=${e.currentTarget.id}`, {
+      scroll: false,
+    });
     router.refresh();
   };
 

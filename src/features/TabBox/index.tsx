@@ -1,13 +1,25 @@
 "use client";
-import { createContext, useContext, useState } from "react";
-import { FixMeLater } from "../../types/types";
+import { createContext, ReactNode, useContext, useState } from "react";
 
-export const TabBoxContext = createContext<FixMeLater>("");
+type TabBoxContextType = {
+  activeTab: string;
+  onTabButtonClick: (tabName: string) => void;
+};
 
-const TabBox = ({ children, initialActiveTab }: FixMeLater) => {
+// Tworzenie kontekstu z domyślną wartością
+export const TabBoxContext = createContext<TabBoxContextType | undefined>(
+  undefined,
+);
+
+type TabBoxProps = {
+  children: ReactNode;
+  initialActiveTab: string;
+};
+
+const TabBox = ({ children, initialActiveTab }: TabBoxProps) => {
   const [activeTab, setActiveTab] = useState(initialActiveTab);
 
-  const onTabButtonClick = (tabName: FixMeLater) => {
+  const onTabButtonClick = (tabName: string) => {
     setActiveTab(tabName);
   };
 
@@ -18,7 +30,7 @@ const TabBox = ({ children, initialActiveTab }: FixMeLater) => {
   );
 };
 
-const ButtonContainer = ({ children }: FixMeLater) => {
+const ButtonContainer = ({ children }: React.HTMLProps<HTMLDivElement>) => {
   return (
     <div className="text-md my-4 flex w-fit gap-4 border-b-2 pb-[2px] text-gray-300 sm:gap-8 sm:text-lg">
       {children}
@@ -26,8 +38,17 @@ const ButtonContainer = ({ children }: FixMeLater) => {
   );
 };
 
-const Button = ({ children, name }: FixMeLater) => {
-  const { activeTab, onTabButtonClick } = useContext(TabBoxContext);
+type ButtonProps = {
+  children: ReactNode;
+  name: string;
+};
+
+const Button = ({ children, name }: ButtonProps) => {
+  const context = useContext(TabBoxContext);
+  if (!context) {
+    throw new Error("Button must be used within a TabBox");
+  }
+  const { activeTab, onTabButtonClick } = context;
   const isActive = name === activeTab;
 
   const conditionalClasses = `${
@@ -46,7 +67,7 @@ const Button = ({ children, name }: FixMeLater) => {
   );
 };
 
-const Content = ({ children }: FixMeLater) => {
+const Content = ({ children }: React.HTMLProps<HTMLDivElement>) => {
   return <div className={`h-full w-full`}>{children}</div>;
 };
 

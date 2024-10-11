@@ -1,5 +1,3 @@
-export type FixMeLater = any;
-
 export type SliderShow = {
   id: number;
   title: string;
