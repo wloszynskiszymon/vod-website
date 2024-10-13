@@ -1,4 +1,4 @@
-import { SliderLink } from "@/app/(api)/api/image/utils/urls";
+import { SliderLink } from "@/app/api/multi/image/utils/urls";
 import { tmdb } from "@/services/tmdb/tmdb";
 import { formatTVsForSlider } from "@/services/tmdb/utils/format";
 import { TV } from "tmdb-ts";

@@ -1,5 +1,4 @@
-import { SliderLink } from "@/app/(api)/api/image/utils/urls";
-import { tmdb } from "@/services/tmdb/tmdb";
+import { SliderLink } from "@/app/api/multi/image/utils/urls";
 import { formatMoviesForSlider } from "@/services/tmdb/utils/format";
 import { Movie } from "tmdb-ts";
 import MediaSlider from "../../MediaSlider";

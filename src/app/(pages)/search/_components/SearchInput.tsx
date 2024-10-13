@@ -42,6 +42,7 @@ const SearchInput = () => {
         className="h-full w-11/12 bg-blue-950 text-3xl font-bold text-white outline-none"
         autoFocus
       />
+
       <div onClick={() => router.push("/")} className="cursor-pointer">
         <DeleteIcon />
       </div>
