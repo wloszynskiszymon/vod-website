@@ -19,6 +19,7 @@ const Header = async () => {
           height={1080}
           src={original}
           blurDataURL={small || undefined}
+          loading="eager"
           alt="Header background"
           className={`absolute left-1/2 h-full max-h-full w-auto -translate-x-1/2 bg-center object-cover lg:w-5/6`}
         />

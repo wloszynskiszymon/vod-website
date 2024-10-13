@@ -21,7 +21,7 @@ export const fetchRandomImage = async () => {
       ? `https://image.tmdb.org/t/p/w300${results[i].backdrop_path}`
       : null;
     const original = results[i]
-      ? `https://image.tmdb.org/t/p/original${results[i].backdrop_path}`
+      ? `https://image.tmdb.org/t/p/w1280${results[i].backdrop_path}`
       : null;
     return { small, original };
   } catch (error) {
