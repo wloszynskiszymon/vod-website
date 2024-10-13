@@ -1,7 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "build" # This should match your `distDir` in `next.config.js`
+  publish = "build" # Ensure this matches your `distDir` in `next.config.js`
 
-[plugins]
-  [[plugins]]
-    package = "@netlify/plugin-nextjs"
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
