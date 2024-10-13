@@ -1,7 +1,7 @@
 "use client";
 import SearchIcon from "@/assets/icons/SearchIcon";
 import { useRouter } from "next/navigation";
-import HeaderInput from "./HeaderInput";
+import HeaderInput from "./headerinput";
 
 const HeaderSearchInput = () => {
   const router = useRouter();
