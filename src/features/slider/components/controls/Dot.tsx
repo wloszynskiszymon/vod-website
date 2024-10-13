@@ -6,7 +6,7 @@ const SliderDot = ({ onClick, active }: DotProps) => {
     <button
       aria-label="carousel-dot"
       onClick={onClick}
-      className={`pointer-events-auto hidden size-3 cursor-pointer rounded-full transition duration-300 md:block ${
+      className={`pointer-events-auto hidden size-4 cursor-pointer rounded-full transition duration-300 md:block ${
         active ? "bg-white" : "bg-gray-500"
       }`}
     ></button>

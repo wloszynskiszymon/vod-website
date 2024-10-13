@@ -22,7 +22,7 @@ const Poster = ({
 }: PosterProps) => {
   const isNew = checkIsNew(releaseDate);
   return (
-    <Link href={`/${mediaType}/${id}`}>
+    <Link aria-hidden={true} href={`/${mediaType}/${id}`}>
       <PosterRoot className={className}>
         <PosterTitle>{title}</PosterTitle>
         {isNew && <PosterBadge imageType={imageType}>NEW</PosterBadge>}
@@ -31,7 +31,7 @@ const Poster = ({
           size="w300"
           src={image}
           className="h-full w-full object-cover group-hover:blur-sm"
-          alt={`${title}`}
+          alt={`${title} image`}
         />
       </PosterRoot>
     </Link>
