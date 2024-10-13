@@ -21,6 +21,7 @@ const MediaSlider: React.FC<MediaSliderProps> = ({
           <Poster
             key={show.id + show.releaseDate}
             mediaType={mediaType}
+            imageType="poster"
             {...show}
           />
         ))}
