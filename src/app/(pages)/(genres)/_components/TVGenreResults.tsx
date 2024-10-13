@@ -1,5 +1,5 @@
 "use client";
-import Poster from "@/features/Poster/Poster";
+import Poster from "@/features/poster/Poster";
 import { cn } from "@/utilities/utils";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";

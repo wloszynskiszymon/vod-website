@@ -1,6 +1,6 @@
 "use client";
 
-import Poster from "@/features/Poster/Poster";
+import Poster from "@/features/poster/Poster";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useSearchParams } from "next/navigation";
 import InfiniteScrollContainer from "./InfiniteScrollContainer";

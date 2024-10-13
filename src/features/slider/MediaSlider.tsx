@@ -1,5 +1,5 @@
 import { SliderShow } from "@/types/types";
-import Poster from "../Poster/Poster";
+import Poster from "../poster/Poster";
 import { SliderContent, SliderRoot, SliderTitle } from "./components";
 
 type MediaSliderProps = {

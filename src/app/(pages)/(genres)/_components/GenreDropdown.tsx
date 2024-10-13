@@ -1,7 +1,7 @@
 "use client";
-import DropdownContent from "@/features/Dropdown/components/DropdownContent";
-import DropdownRoot from "@/features/Dropdown/components/DropdownRoot";
-import DropdownTrigger from "@/features/Dropdown/components/DropdownTrigger";
+import DropdownContent from "@/features/dropdown/components/DropdownContent";
+import DropdownRoot from "@/features/dropdown/components/DropdownRoot";
+import DropdownTrigger from "@/features/dropdown/components/DropdownTrigger";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Genre } from "tmdb-ts";

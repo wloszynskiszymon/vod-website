@@ -1,4 +1,4 @@
-import Poster from "@/features/Poster/Poster";
+import Poster from "@/features/poster/Poster";
 import { tmdb } from "@/services/tmdb/tmdb";
 import { formatMoviesForSlider } from "@/services/tmdb/utils/format";
 

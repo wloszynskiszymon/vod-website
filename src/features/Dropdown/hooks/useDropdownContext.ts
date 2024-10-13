@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DropdownContext } from "./../context/DropdownContext";
+import { DropdownContext } from "../context/DropdownContext";
 
 const useDropdownContext = () => {
   const context = useContext(DropdownContext);

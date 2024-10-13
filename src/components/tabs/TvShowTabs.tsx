@@ -1,9 +1,9 @@
 import DetailsHeader from "@/app/(pages)/(details)/_components/DetailsHeader";
 import { TvShowDetails } from "tmdb-ts";
-import TabContent from "../../features/TabBox/components/TabContent";
-import TabRoot from "../../features/TabBox/components/TabRoot";
-import TabsButton from "../../features/TabBox/components/TabsButton";
-import TabsList from "../../features/TabBox/components/TabsList";
+import TabContent from "../../features/tabbox/components/TabContent";
+import TabRoot from "../../features/tabbox/components/TabRoot";
+import TabsButton from "../../features/tabbox/components/TabsButton";
+import TabsList from "../../features/tabbox/components/TabsList";
 import TabDetails from "./TabDetails";
 import TabSimilar from "./TabSimilar";
 

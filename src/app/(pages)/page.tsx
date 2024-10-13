@@ -1,5 +1,5 @@
-import MoviesSliderList from "@/features/Slider/variants/movie/MoviesSliderList";
-import TVsSliderList from "@/features/Slider/variants/tv/TVsSliderList";
+import MoviesSliderList from "@/features/slider/variants/movie/MoviesSliderList";
+import TVsSliderList from "@/features/slider/variants/tv/TVsSliderList";
 import Footer from "../../components/utils/Footer";
 import Main from "../../components/utils/Main";
 import {
