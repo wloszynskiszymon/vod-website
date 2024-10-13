@@ -6,7 +6,7 @@ import {
   sliderMoviesLinks,
   sliderTVsLink,
 } from "../api/multi/image/utils/urls";
-import { Header } from "./_components/Header";
+import { Header } from "./_components/header";
 
 const Page = async () => {
   return (
