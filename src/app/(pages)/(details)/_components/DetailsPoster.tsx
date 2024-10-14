@@ -15,7 +15,7 @@ const DetailsPoster = ({
       {...props}
       style={{ backgroundColor: "#eee" }}
       className={cn(
-        `${className} md:flex-center flex h-full justify-center self-center overflow-hidden rounded-xl border-2 border-gray-700 bg-inherit md:w-auto`,
+        `${className} md:flex-center mt-12 flex w-1/2 justify-center self-center overflow-hidden rounded-xl border-2 border-gray-700 bg-inherit md:mt-0 md:h-full md:w-auto`,
       )}
     >
       <TMDBImage

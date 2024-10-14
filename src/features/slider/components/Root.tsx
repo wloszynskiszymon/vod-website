@@ -10,7 +10,10 @@ const SliderRoot: React.FC<SliderRootProps> = ({
   ...props
 }) => {
   return (
-    <section {...props} className={cn(`${className} relative px-14`)}>
+    <section
+      {...props}
+      className={cn(`${className} relative min-h-[15rem] px-8 md:px-14`)}
+    >
       {children}
     </section>
   );

@@ -8,7 +8,7 @@ const SliderTitle = ({ children, className, ...props }: SliderTitleProps) => {
     <h2
       {...props}
       className={cn(
-        `${className ? className : ""} mb-4 h-8 font-extrabold uppercase tracking-wider text-gray-300 md:ml-4 md:text-xl lg:text-2xl`,
+        `${className ? className : ""} mb-2 h-8 text-center text-lg font-extrabold uppercase text-gray-300 md:mb-4 md:ml-4 md:text-start md:text-xl lg:text-2xl lg:tracking-wider`,
       )}
     >
       {children}

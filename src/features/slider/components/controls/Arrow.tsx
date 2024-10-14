@@ -12,7 +12,7 @@ type ArrowContextType = {
 const ArrowContext = createContext<ArrowContextType | undefined>(undefined);
 
 const commonClasses =
-  "absolute bottom-0 pointer-events-auto flex-center h-32 w-8 md:w-12 bg-blue-950 bg-opacity-30 hover:bg-opacity-70 transition duration-200 z-20";
+  "absolute bottom-0 pointer-events-auto flex-center h-24 md:h-32 w-7 md:w-8 md:w-12 bg-blue-950 bg-opacity-30 hover:bg-opacity-70 transition duration-200 z-20";
 
 const Left = ({ onClick }: ArrowProps) => {
   return (

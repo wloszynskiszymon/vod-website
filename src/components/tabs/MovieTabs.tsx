@@ -64,13 +64,13 @@ const MovieTabs = ({
             value="collection"
           >
             <TabCollection
-              className="grid grid-cols-5 gap-2 py-4"
+              className="grid grid-cols-2 gap-2 px-1 py-4 md:grid-cols-3 lg:grid-cols-5"
               collectionId={belongs_to_collection?.id}
             />
           </TabContent>
         )}
         <TabContent
-          className="min-h-0 flex-1 overflow-y-auto px-1"
+          className="min-h-0 flex-1 overflow-y-auto"
           value="similar"
           id="movie-similar"
         >

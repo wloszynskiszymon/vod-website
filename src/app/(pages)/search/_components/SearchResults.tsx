@@ -18,7 +18,7 @@ const SearchResults = () => {
       className="h-full w-full translate-y-28 overflow-y-auto"
     >
       <InfiniteScrollContainer
-        className="grid h-fit w-full grid-cols-8 gap-4 p-4"
+        className="grid h-fit w-full grid-cols-2 gap-4 p-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8"
         parentId="search-page-results"
         {...infiniteScrollResults}
       >

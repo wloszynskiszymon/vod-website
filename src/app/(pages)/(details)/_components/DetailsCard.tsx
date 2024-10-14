@@ -13,7 +13,7 @@ const DetailsCard = ({
     <Card
       {...props}
       className={cn(
-        `${className} z-10 flex h-[540px] w-5/6 gap-4 overflow-hidden bg-gray-950 md:bg-gray-900`,
+        `${className} z-10 flex h-full w-full flex-col gap-4 overflow-hidden bg-gray-950 md:h-[540px] md:w-5/6 md:flex-row md:bg-gray-900`,
       )}
     >
       {children}

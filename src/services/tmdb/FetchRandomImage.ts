@@ -12,20 +12,18 @@ export const fetchRandomImage = async () => {
     });
 
     // If there is no image data, return null
-    if (results.length === 0) return { small: null, original: null };
+    if (results.length === 0) return null;
 
     // Get random image - bad and good quality
     const i = Math.floor(Math.random() * results.length);
 
-    const small = results[i]
-      ? `https://image.tmdb.org/t/p/w300${results[i].backdrop_path}`
-      : null;
-    const original = results[i]
+    const image = results[i]
       ? `https://image.tmdb.org/t/p/w1280${results[i].backdrop_path}`
       : null;
-    return { small, original };
+
+    return image;
   } catch (error) {
     console.error("Error fetching image:", error);
-    return { small: null, original: null };
+    return null;
   }
 };
