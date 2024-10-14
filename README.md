@@ -1,26 +1,19 @@
-### In short about this project
+### About this project
 
-It's a simple VOD website, I'm constantly updating it and enhancing it as well as code while learning new patterns and technologies.
-I try to practice here many popular technologies and libraries, even though some aren't so necessary here.
+It's a simple front-end website originally build in React + JavaScript, but now it's set up using Next.js + TypeScript. I tried to make it simple and straight forward in order to learn the best React practices and patterns. After one year of coding in React I updated this project in 2024 and massively improved page performance and code.
 
 ### Current technologies:
 
-- React.js
-- React Router
+- Next.js
+- TypeScript
 - React Query
 - Tailwind
 
 ## Could be added in the future:
 
-- Adding lazy loading and skeleton layout when loading
-- Adding better picture loading
-- Restructuring code and making components more generic and reusable
-- Better folder structure
-- Extracting some page parts into new components
-- Making page faster
-- Better and more detailed error handling
-
-- Used to have Redux, but React Query was entirely enough, so I removed it.
+- Improve loading and error handling
+- Further simplify code
+- Improve page loading (especially for mobile - caused mostly by the external carousel)
 
 ### To start
 
@@ -42,5 +35,3 @@ npm install
 ```bash
 npm start
 ```
-
-- - Early version of this project used to be recruitment task for polish company, so old commits are in Polish, now it's 100% English.
