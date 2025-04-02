@@ -4,7 +4,7 @@ import SearchResults from "./_components/SearchResults";
 
 const SearchPage = () => {
   return (
-    <div className="h-screen w-screen">
+    <div className="h-screen w-screen overflow-hidden">
       <Suspense
         fallback={
           <div className="flex-center text-xl text-white">Loading...</div>
