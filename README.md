@@ -15,11 +15,12 @@ It's a simple front-end website originally build in React + JavaScript, but now 
 - Improve loading and error handling
 - Further simplify code
 - Improve page loading (especially for mobile - caused mostly by the external carousel)
+- More details for tv series (not just seasons but also episodes)
 
 ## To start
 
 Link
-https://vod-website-szymon.netlify.app/
+https://filmix-website-szymon.netlify.app/
 
 ### OR
 
